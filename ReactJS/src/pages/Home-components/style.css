@@ -1,0 +1,41 @@
+.category-electronics, .category-fashion, .category-home-appliances, .category-furniture, .category-groceries, .category-beauty-health, .category-sports, .category-book-toys{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+.Fashion-Menu, .Furniture-Menu, .Appliances-Menu, .Books-Toys-Menu, .Groceries-Menu, .Sports-Menu, .Beauty-Health-Menu, .Electronics-Menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  width: 210px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  z-index: 1;
+  padding: 8px 0;
+  text-align: left;
+}
+.Fashion-Menu a, .Furniture-Menu a, .Appliances-Menu a, .Books-Toys-Menu a, .Groceries-Menu a, .Sports-Menu a, .Beauty-Health-Menu a, .Electronics-Menu a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: sans-serif;
+}
+.Fashion-Menu a:hover, .Furniture-Menu a:hover, .Appliances-Menu a:hover, .Books-Toys-Menu a:hover, .Groceries-Menu a:hover, .Sports-Menu a:hover, .Beauty-Health-Menu a:hover, .Electronics-Menu a:hover {
+  background-color: #f1f1f1;
+}
+.category-fashion:hover .Fashion-Menu, .category-furniture:hover .Furniture-Menu, .category-home-appliances:hover .Appliances-Menu, .category-book-toys:hover .Books-Toys-Menu, .category-groceries:hover .Groceries-Menu, .category-sports:hover .Sports-Menu, .category-beauty-health:hover .Beauty-Health-Menu, .category-electronics:hover .Electronics-Menu {
+  display: block;
+}
+.category-fashion:hover h3, .category-furniture:hover h3, .category-home-appliances:hover h3, .category-book-toys:hover h3, .category-groceries:hover h3, .category-sports:hover h3, .category-beauty-health:hover h3, .category-electronics:hover h3 {
+  background-color: #007bff;
+  color: white;
+}
