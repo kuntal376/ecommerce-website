@@ -39,3 +39,15 @@
   background-color: #007bff;
   color: white;
 }
+
+//change-from-here
+.category-fashion h3, .category-furniture h3, .category-home-appliances h3, .category-book-toys h3, .category-groceries h3, .category-sports h3, .category-beauty-health h3, .category-electronics h3 {
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.top-deals-heading{
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
