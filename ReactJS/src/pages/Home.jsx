@@ -4,7 +4,6 @@ import Trending from "./Home-components/trending";
 import TopDeals from "./Home-components/topDeals";
 import ProductView from "./Home-components/productView";
 import DealsOnProduct from "./Home-components/dealsOnproduct";
-import AdvertisingBar from "./Home-components/advertisingBar";
 import './Home.css';
 
 const Home = () => {
@@ -15,8 +14,6 @@ const Home = () => {
           <div className="category">
           <Category/>
           </div>
-          <div className="advertising">
-          <AdvertisingBar/>
           </div>
           <div className="top-deals">
           <TopDeals/>
@@ -38,5 +35,6 @@ const Home = () => {
     </>
   );
 }
+
 
 export default Home;
