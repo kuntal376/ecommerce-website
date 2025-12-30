@@ -12,15 +12,12 @@ const MobilesFilter = ({ filters, setFilters }) => {
 
   return (
     <>
-      <aside className="w-64 bg-white border rounded-md p-4">
+      <aside className="w-64 h-min bg-white border rounded-md p-4">
         <h2 className="font-semibold text-lg mb-4">Filters</h2>
 
         {/* Sort By */}
         <div className="mb-4">
-          <h3
-            onClick={() => setOpen({ ...open, sort: !open.sort })}
-            className="font-medium cursor-pointer flex justify-between"
-          >
+          <h3 onClick={() => setOpen({ ...open, sort: !open.sort })} className="font-medium cursor-pointer flex justify-between">
             Sort By
             <span>{open.sort ? "-" : "+"}</span>
           </h3>
@@ -211,7 +208,7 @@ const MobilesFilter = ({ filters, setFilters }) => {
         <button
           onClick={() =>
             setFilters({ram: [], storage: [], brand: [], display: [], price: "", sort: "none",})
-          } className="w-full bg-gray-300 text-black py-2 rounded-md hover:bg-gray-400 mb-2">
+          } className="w-full bg-[#007bff] text-black py-2 rounded-md hover:bg-[#afcbff] mb-2">
           Clear All
         </button>
       </aside>

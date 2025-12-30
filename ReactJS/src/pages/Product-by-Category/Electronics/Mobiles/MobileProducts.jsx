@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SamsungM14 from "../images/samsung-galaxy-m14-5g.webp";
 import SamsungM14_2 from "../images/samsung-galaxy-m14-5g-2.webp";
 import SamsungM14_3 from "../images/samsung-galaxy-m14-5g-3.webp";
@@ -172,16 +173,17 @@ const MobileProducts = ({ filters }) => {
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-4 flex-1">
+      <div className="h-min grid grid-cols-3 gap-4 flex-1">
         {filteredProducts.map((product) => (
           <div key={product.id} className="border rounded-md p-4 bg-white hover:shadow-lg transition">
+            <Link to={product.name}>
             <div className="flex overflow-auto scrollbar-hide">
               {product.images.map((img) => (
-                <img src={img} alt={product.name}
+                <img key={product.id} src={img} alt={product.name}
                   className="w-60 h-60 object-contain flex-shrink-0"
                 />
               ))}
-            </div>
+            </div></Link>
 
             <h3 className="text-sm font-medium mt-2">{product.name}</h3>
 

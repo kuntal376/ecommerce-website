@@ -15,9 +15,7 @@ const Mobiles = () => {
 
   return (
     <>
-      <section className="p-4 font-bold text-2xl">
-        Mobiles
-      </section>
+      <section className="p-4 font-bold text-2xl">Mobiles</section>
 
       <section className="Electronics-section">
         <div className="Electronics-bars flex gap-4 p-4">
