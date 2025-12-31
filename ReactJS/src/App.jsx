@@ -7,11 +7,13 @@ import Mobiles from './pages/Product-by-Category/Electronics/Mobiles/Mobiles.jsx
 import Laptops from './pages/Product-by-Category/Electronics/Laptops/Laptops.jsx'
 import Cameras from './pages/Product-by-Category/Electronics/Cameras/Cameras.jsx'
 import Tablets from './pages/Product-by-Category/Electronics/Tablets.jsx'
-import AudioDevices from './pages/Product-by-Category/Electronics/AudioDevices.jsx'
 import WearableTechnology from './pages/Product-by-Category/Electronics/WearableTechnology.jsx'
 import MenTopWear from './pages/Product-by-Category/Fashion/MenTopWear/MenTopWear.jsx'
 import MenBottomWear from './pages/Product-by-Category/Fashion/MenBottomWear/MenBottomWear.jsx'
 import WomenTopWear from './pages/Product-by-Category/Fashion/WomenTopWear/WomenTopWear.jsx'
+import WomenBottomWear from './pages/Product-by-Category/Fashion/WomenBottomWear/WomenBottomWear.jsx'
+import MenFootwear from './pages/Product-by-Category/Fashion/MenFootwear/MenFootwear.jsx'
+import WomenFootwear from './pages/Product-by-Category/Fashion/WomenFootwear/WomenFootwear.jsx'
 import KitchenAppliances from './pages/Product-by-Category/HomeAppliances/KitchenAppliances.jsx'
 
 function App() {
@@ -19,7 +21,7 @@ function App() {
   return (
     <>
     <Router>
-      <Header />
+      <div className='sticky top-0 z-50 shadow-md'><Header /></div>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/Mobiles' element={<Mobiles/>}/>
@@ -31,8 +33,12 @@ function App() {
         <Route path='/Men-Top-Wear' element={<MenTopWear/>}/>
         <Route path='/Men-Bottom-Wear' element={<MenBottomWear/>}/>
         <Route path='/Women-Top-Wear' element={<WomenTopWear/>}/>
+        <Route path='/Women-Bottom-Wear' element={<WomenBottomWear/>}/>
+        <Route path='/Men-Footwear' element={<MenFootwear/>}/>
+        <Route path='/Women-Footwear' element={<WomenFootwear/>}/>
         <Route path='/Kitchen-appliances' element={<KitchenAppliances/>}/>
       </Routes>
+      <Footer/>
     </Router>
     </>
   )
