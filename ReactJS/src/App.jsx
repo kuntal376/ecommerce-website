@@ -28,7 +28,6 @@ function App() {
         <Route path='/Laptops' element={<Laptops/>}/>
         <Route path='/Cameras' element={<Cameras/>}/>
         <Route path='/Tablets' element={<Tablets/>}/>
-        <Route path='/Audio-Devices' element={<AudioDevices/>}/>
         <Route path='/Wearable-Technology' element={<WearableTechnology/>}/>
         <Route path='/Men-Top-Wear' element={<MenTopWear/>}/>
         <Route path='/Men-Bottom-Wear' element={<MenBottomWear/>}/>
