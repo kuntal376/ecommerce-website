@@ -178,8 +178,8 @@ const MobileProducts = ({ filters }) => {
           <div key={product.id} className="border rounded-md p-4 bg-white hover:shadow-lg transition">
             <Link to={product.name}>
             <div className="flex overflow-auto scrollbar-hide">
-              {product.images.map((img) => (
-                <img key={product.id} src={img} alt={product.name}
+              {product.images.map((img,index) => (
+                <img key={index} src={img} alt={product.name}
                   className="w-60 h-60 object-contain flex-shrink-0"
                 />
               ))}
