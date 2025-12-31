@@ -9,7 +9,9 @@ import Cameras from './pages/Product-by-Category/Electronics/Cameras.jsx'
 import Tablets from './pages/Product-by-Category/Electronics/Tablets.jsx'
 import AudioDevices from './pages/Product-by-Category/Electronics/AudioDevices.jsx'
 import WearableTechnology from './pages/Product-by-Category/Electronics/WearableTechnology.jsx'
-import MenTopWear from './pages/Product-by-Category/Fashion/MenTopWear.jsx'
+import MenTopWear from './pages/Product-by-Category/Fashion/MenTopWear/MenTopWear.jsx'
+import MenBottomWear from './pages/Product-by-Category/Fashion/MenBottomWear/MenBottomWear.jsx'
+import WomenTopWear from './pages/Product-by-Category/Fashion/WomenTopWear/WomenTopWear.jsx'
 import KitchenAppliances from './pages/Product-by-Category/HomeAppliances/KitchenAppliances.jsx'
 
 function App() {
