@@ -31,12 +31,14 @@ function App() {
         <Route path='/Cameras' element={<Cameras/>}/>
         <Route path='/Tablets' element={<Tablets/>}/>
         <Route path='/Audio-Devices' element={<AudioDevices/>}/>
-        <Route path='/Men-Top-Wear' element={<MenTopWear/>}/>
+         <Route path='/Men-Top-Wear' element={<MenTopWear/>}/>
         <Route path='/Men-Bottom-Wear' element={<MenBottomWear/>}/>
         <Route path='/Women-Top-Wear' element={<WomenTopWear/>}/>
         <Route path='/Women-Bottom-Wear' element={<WomenBottomWear/>}/>
         <Route path='/Men-Footwear' element={<MenFootwear/>}/>
         <Route path='/Women-Footwear' element={<WomenFootwear/>}/>
+        <Route path='/Bags-Luggages' element={<BagsLuggages/>}/>
+        <Route path='/Kids' element={<Kids/>}/>
         <Route path='/Kitchen-appliances' element={<KitchenAppliances/>}/>
       </Routes>
       <Footer/>
