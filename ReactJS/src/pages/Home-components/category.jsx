@@ -24,7 +24,7 @@ const Category = ()=>{
                         <Link to="/Laptops">Laptops</Link>
                         <Link to="/Cameras">Cameras</Link>
                         <Link to="/Tablets">Tablets</Link>
-                        <Link to="/Wearable-Technology">Wearable Technology</Link>
+                        <Link to="/Audio-Devices">Audio Devices</Link>
                     </div>
                 </div>
                 <div className="category-fashion">
@@ -120,3 +120,4 @@ const Category = ()=>{
 }
 
 export default Category
+
