@@ -1,8 +1,8 @@
-.Electronics-section{
+.Electronics-section, .Fashion-section{
     align-content: flex-start;
     background-color: #f0f0f0;
 }
-.Electronics-bars{
+.Electronics-bars, .Fashion-bars{
     display: flex;
     flex-direction: row;
     gap: 20px;
