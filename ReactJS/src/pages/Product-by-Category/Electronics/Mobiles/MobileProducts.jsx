@@ -38,6 +38,7 @@ const products = [
     rom: "256 GB",
     displaySize: "6.7 inches",
     displayType: "Super AMOLED Plus",
+    processor: "Samsung Exynos 1380",
     rearCamera: "108 MP",
     frontCamera: "32 MP"
   },
@@ -51,6 +52,7 @@ const products = [
     rom: "128 GB",
     displaySize: "6.6 inches",
     displayType: "PLS LCD",
+    processor: "Samsung Exynos 1330",
     rearCamera: "50 MP",
     frontCamera: "13 MP"
   },
@@ -64,6 +66,7 @@ const products = [
     rom: "128 GB",
     displaySize: "6.6 inches",
     displayType: "Super AMOLED",
+    processor: "Samsung Exynos 1280",
     rearCamera: "50 MP",
     frontCamera: "13 MP"
   },
@@ -77,6 +80,7 @@ const products = [
     rom: "128 GB",
     displaySize: "6.5 inches",
     displayType: "Super AMOLED",
+    processor: "MediaTek Helio G99",
     rearCamera: "50 MP",
     frontCamera: "13 MP"
   },
@@ -90,6 +94,7 @@ const products = [
     rom: "128 GB",
     displaySize: "6.72 inches",
     displayType: "FHD+ LCD",
+    processor: "MediaTek Dimensity 6100+",
     rearCamera: "50 MP + 2 MP",
     frontCamera: "8 MP"
   },
@@ -103,6 +108,7 @@ const products = [
     rom: "256 GB",
     displaySize: "6.7 inches",
     displayType: "AMOLED",
+    processor: "Qualcomm Snapdragon 7 Gen 3",
     rearCamera: "50 MP + 8 MP + 2 MP",
     frontCamera: "32 MP"
   },
@@ -116,6 +122,7 @@ const products = [
     rom: "128 GB",
     displaySize: "6.52 inches",
     displayType: "HD+ IPS LCD",
+    processor: "MediaTek Helio G36",
     rearCamera: "13 MP",
     frontCamera: "5 MP"
   },
@@ -129,6 +136,7 @@ const products = [
     rom: "128 GB",
     displaySize: "6.67 inches",
     displayType: "AMOLED",
+    processor: "Qualcomm Snapdragon 7s Gen 2",
     rearCamera: "200 MP + 8 MP + 2 MP",
     frontCamera: "16 MP"
   },
@@ -142,6 +150,7 @@ const products = [
     rom: "256 GB",
     displaySize: "6.74 inches",
     displayType: "AMOLED",
+    processor: "Qualcomm Snapdragon 7+ Gen 3",
     rearCamera: "50 MP + 8 MP",
     frontCamera: "32 MP"
   }
@@ -193,6 +202,8 @@ const MobileProducts = ({ filters }) => {
               <span className="font-medium">RAM:</span><span>{product.ram}</span>
 
               <span className="font-medium">Storage:</span><span>{product.rom}</span>
+
+              <span className="font-medium">Processor:</span><span>{product.processor}</span>
 
               <span className="font-medium">Display:</span><span>{product.displaySize} | {product.displayType}</span>
 
