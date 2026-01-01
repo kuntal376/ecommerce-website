@@ -7,6 +7,7 @@ import Mobiles from './pages/Product-by-Category/Electronics/Mobiles/Mobiles.jsx
 import Laptops from './pages/Product-by-Category/Electronics/Laptops/Laptops.jsx'
 import Cameras from './pages/Product-by-Category/Electronics/Cameras/Cameras.jsx'
 import Tablets from './pages/Product-by-Category/Electronics/Tablets/Tablets.jsx'
+import AudioDevices from './pages/Product-by-Category/Electronics/AudioDevices/AudioDevices.jsx'
 import WearableTechnology from './pages/Product-by-Category/Electronics/WearableTechnology.jsx'
 import MenTopWear from './pages/Product-by-Category/Fashion/MenTopWear/MenTopWear.jsx'
 import MenBottomWear from './pages/Product-by-Category/Fashion/MenBottomWear/MenBottomWear.jsx'
@@ -28,6 +29,7 @@ function App() {
         <Route path='/Laptops' element={<Laptops/>}/>
         <Route path='/Cameras' element={<Cameras/>}/>
         <Route path='/Tablets' element={<Tablets/>}/>
+        <Route path='/Audio-Devices' element={<AudioDevices/>}/>
         <Route path='/Wearable-Technology' element={<WearableTechnology/>}/>
         <Route path='/Men-Top-Wear' element={<MenTopWear/>}/>
         <Route path='/Men-Bottom-Wear' element={<MenBottomWear/>}/>
