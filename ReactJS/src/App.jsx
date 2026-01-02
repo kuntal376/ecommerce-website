@@ -16,7 +16,7 @@ import MenFootwear from './pages/Product-by-Category/Fashion/MenFootwear/MenFoot
 import WomenFootwear from './pages/Product-by-Category/Fashion/WomenFootwear/WomenFootwear.jsx'
 import BagsLuggages from './pages/Product-by-Category/Fashion/BagsLuggages/BagsLuggages.jsx'
 import Kids from './pages/Product-by-Category/Fashion/Kids/Kids.jsx'
-import KitchenAppliances from './pages/Product-by-Category/HomeAppliances/KitchenAppliances.jsx'
+import KitchenAppliances from './pages/Product-by-Category/HomeAppliances/KitchenAppliances/KitchenAppliances.jsx'
 
 function App() {
 
