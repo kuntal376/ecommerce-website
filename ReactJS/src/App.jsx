@@ -17,6 +17,7 @@ import WomenFootwear from './pages/Product-by-Category/Fashion/WomenFootwear/Wom
 import BagsLuggages from './pages/Product-by-Category/Fashion/BagsLuggages/BagsLuggages.jsx'
 import Kids from './pages/Product-by-Category/Fashion/Kids/Kids.jsx'
 import KitchenAppliances from './pages/Product-by-Category/HomeAppliances/KitchenAppliances/KitchenAppliances.jsx'
+import LargeAppliances from './pages/Product-by-Category/HomeAppliances/LargeAppliances/LargeAppliances.jsx'
 
 function App() {
 
@@ -39,7 +40,8 @@ function App() {
         <Route path='/Women-Footwear' element={<WomenFootwear/>}/>
         <Route path='/Bags-Luggages' element={<BagsLuggages/>}/>
         <Route path='/Kids' element={<Kids/>}/>
-        <Route path='/Kitchen-appliances' element={<KitchenAppliances/>}/>
+        <Route path='/Kitchen-Appliances' element={<KitchenAppliances/>}/>
+        <Route path='/Large-Appliances' element={<LargeAppliances/>}/>
       </Routes>
       <Footer/>
     </Router>
