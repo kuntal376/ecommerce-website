@@ -75,7 +75,7 @@ const LargeAppliancesFilter = ({ filters, setFilters }) => {
           </h3>
           {open.price && (
             <div className="mt-2 space-y-1 text-sm">
-              {[1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000].map((p) => (
+              {[10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000].map((p) => (
                 <label key={p} className="flex gap-2">
                   <input
                     type="radio"
