@@ -18,6 +18,7 @@ import BagsLuggages from './pages/Product-by-Category/Fashion/BagsLuggages/BagsL
 import Kids from './pages/Product-by-Category/Fashion/Kids/Kids.jsx'
 import KitchenAppliances from './pages/Product-by-Category/HomeAppliances/KitchenAppliances/KitchenAppliances.jsx'
 import LargeAppliances from './pages/Product-by-Category/HomeAppliances/LargeAppliances/LargeAppliances.jsx'
+import SmallAppliances from './pages/Product-by-Category/HomeAppliances/SmallAppliances/SmallAppliances.jsx'
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path='/Kids' element={<Kids/>}/>
         <Route path='/Kitchen-Appliances' element={<KitchenAppliances/>}/>
         <Route path='/Large-Appliances' element={<LargeAppliances/>}/>
+        <Route path='/Small-Appliances' element={<SmallAppliances/>}/>
       </Routes>
       <Footer/>
     </Router>
