@@ -6,19 +6,17 @@ const Cart = () => {
   const navigate = useNavigate();
   const { cartItems, updateQty, removeFromCart } = useCart();
 
-  // Price Logic
   const totalPrice = cartItems.reduce((sum, item) => sum + item.finalPrice * item.qty, 0);
   const discount = totalPrice > 1000 ? 200 : 0
   const deliveryCharge = totalPrice > 1000 ? 0 : 40;
   const finalAmount = totalPrice - discount + deliveryCharge;
 
   const handlePlaceOrder = () => {
-    // Navigate directly to Checkout. No address check here.
     navigate("/checkout", {
       state: {
         items: cartItems,
         totalAmount: finalAmount,
-        priceDetails: { totalPrice, discount, deliveryCharge } // Optional: Pass breakdown for display
+        priceDetails: { totalPrice, discount, deliveryCharge } 
       }
     });
   };
@@ -26,7 +24,6 @@ const Cart = () => {
   return (
     <div className="mx-auto p-6 flex flex-col lg:flex-row gap-6 bg-[#f0f0f0] min-h-screen">
       
-      {/* LEFT: CART ITEMS ONLY */}
       <div className="flex-1 bg-white p-4 shadow rounded h-fit">
         <h2 className="text-lg font-semibold mb-4">My Cart ({cartItems.length})</h2>
 
@@ -61,7 +58,6 @@ const Cart = () => {
         )}
       </div>
 
-      {/* RIGHT: PRICE DETAILS */}
       <div className="w-full lg:w-[360px]">
         <div className="bg-white p-4 shadow rounded sticky top-24">
           <h2 className="text-gray-500 font-bold border-b pb-3 mb-4">PRICE DETAILS</h2>

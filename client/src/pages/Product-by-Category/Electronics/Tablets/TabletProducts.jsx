@@ -101,7 +101,7 @@ const TabletProducts = ({ filters, apiData }) => {
             <span className="font-medium text-gray-500">Storage:</span><span>{product.specs?.rom}</span>
             <span className="font-medium text-gray-500">Processor:</span><span>{product.specs?.processor}</span>
             <span className="font-medium text-gray-500">Display:</span><span>{product.specs?.displaySize} | {product.specs?.displayType}</span>
-            <span className="font-medium text-gray-500">Camera:</span><span>{product.specs?.rearCamera} Rear | {product.specs?.frontCamera} Front</span>
+             <span className="font-medium text-gray-500">Camera:</span><span>{product.specs?.backCamera} Rear | {product.specs?.frontCamera} Front</span>
           </div>
         </div>
       )})}

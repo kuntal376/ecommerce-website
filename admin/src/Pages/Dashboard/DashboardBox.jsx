@@ -6,7 +6,6 @@ import { BsBank } from "react-icons/bs";
 import { enUS } from '@mui/x-charts/locales';
 import { FaSpinner } from 'react-icons/fa';
 
-// Import API
 import { getDashboardData } from '../../service/api';
 
 const DashboardBox = () => {

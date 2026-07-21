@@ -89,7 +89,7 @@ const Header = () => {
             >
                 <Box sx={{ color: '#64748b' }}> 
                     <Badge color="error" variant="dot">
-                        <MailIcon />
+                        <Link to={'/settings'}><MailIcon /></Link>
                     </Badge>
                 </Box>
             </Button>

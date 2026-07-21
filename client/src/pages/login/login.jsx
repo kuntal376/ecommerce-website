@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaEnvelope, FaLock, FaSignInAlt } from 'react-icons/fa'; // Changed FaUser to FaEnvelope
+import { FaEnvelope, FaLock, FaSignInAlt } from 'react-icons/fa';
 import { authenticateLogin } from '../../service/api';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -19,7 +19,6 @@ const Login = ({ setAccount }) => {
     }
 
     const loginUser = async () => {
-        // CHANGED: Validation check for email
         if (!loginValues.email || !loginValues.password) {
             setError("Please fill in all fields.");
             return;
@@ -48,7 +47,6 @@ const Login = ({ setAccount }) => {
         <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
             <div className="bg-white rounded-xl shadow-lg flex max-w-4xl w-full overflow-hidden h-[500px]">
                 
-                {/* Left Side (Unchanged) */}
                 <div className="hidden md:flex w-2/5 bg-blue-900 text-white flex-col items-center justify-center p-8 text-center">
                     <h2 className="text-3xl font-bold mb-4">Welcome Back!</h2>
                     <p className="text-blue-100 mb-8">To keep connected with us please login with your personal info.</p>
@@ -57,7 +55,6 @@ const Login = ({ setAccount }) => {
                     </div>
                 </div>
 
-                {/* Right Side - Form */}
                 <div className="w-full md:w-3/5 p-8 md:p-12 flex flex-col justify-center">
                     <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">Login</h2>
                     
@@ -65,12 +62,11 @@ const Login = ({ setAccount }) => {
 
                     <div className="flex flex-col gap-6">
                         
-                        {/* CHANGED: Email Input Field */}
                         <div className="relative">
                             <FaEnvelope className="absolute left-3 top-3.5 text-gray-400 text-lg"/>
                             <input 
                                 type="email" 
-                                name="email"  // matches state key
+                                name="email"
                                 value={loginValues.email} 
                                 onChange={onValueChange} 
                                 placeholder="Email Address" 

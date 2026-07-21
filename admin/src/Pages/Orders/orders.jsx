@@ -8,27 +8,22 @@ import {
 import { getAllOrders, updateOrderStatus, deleteOrder } from '../../service/api';
 
 const Orders = () => {
-    // --- STATE ---
     const [orders, setOrders] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [statusFilter, setStatusFilter] = useState('All');
     
-    // Pagination
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(10); 
 
-    // Status Edit Modal State
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [newStatus, setNewStatus] = useState('');
-    const [newPaymentStatus, setNewPaymentStatus] = useState(''); // NEW STATE
+    const [newPaymentStatus, setNewPaymentStatus] = useState('');
 
-    // Product Details Modal State
     const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
     const [selectedOrderDetails, setSelectedOrderDetails] = useState(null);
 
-    // --- MOCK DATA ---
     const MOCK_ORDERS = [
         { 
             _id: 'ORD-7890', createdAt: '2025-10-24T10:00:00Z', totalAmount: 1299, paymentStatus: 'Paid', paymentMethod: 'Online', orderStatus: 'Delivered',
@@ -44,7 +39,6 @@ const Orders = () => {
         },
     ];
 
-    // --- EFFECTS ---
     useEffect(() => {
         fetchOrders();
     }, []);
@@ -53,7 +47,6 @@ const Orders = () => {
         setCurrentPage(1);
     }, [searchTerm, statusFilter]);
 
-    // --- API HANDLERS ---
     const fetchOrders = async () => {
         setIsLoading(true);
         try {
@@ -83,11 +76,10 @@ const Orders = () => {
         }
     };
 
-    // --- MODAL HANDLERS ---
     const openEditModal = (order) => {
         setSelectedOrder(order);
         setNewStatus(order.orderStatus);
-        setNewPaymentStatus(order.paymentStatus); // Load current payment status
+        setNewPaymentStatus(order.paymentStatus);
         setIsEditModalOpen(true);
     };
 
@@ -99,7 +91,6 @@ const Orders = () => {
     const handleStatusUpdate = async () => {
         if (!selectedOrder) return;
         try {
-            // Sending BOTH statuses as an object
             const updateData = {
                 orderStatus: newStatus,
                 paymentStatus: newPaymentStatus
@@ -120,26 +111,7 @@ const Orders = () => {
             alert('Failed to update status.');
         }
     };
-
-    const handleExportCSV = () => {
-        const headers = ["Order ID", "Date", "Amount", "Payment Status", "Order Status"];
-        const rows = orders.map(order => [
-            order._id, 
-            new Date(order.createdAt).toLocaleDateString(),
-            order.totalAmount,
-            order.paymentStatus,
-            order.orderStatus
-        ]);
-        const csvContent = "data:text/csv;charset=utf-8," + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
-        const encodedUri = encodeURI(csvContent);
-        const link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "orders_export.csv");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
-
+    
     const getStatusColor = (status) => {
         switch (status) {
             case 'Delivered': return 'bg-green-100 text-green-700 border-green-200';
@@ -151,15 +123,18 @@ const Orders = () => {
         }
     };
 
-    // --- FILTERING & PAGINATION ---
     const filteredOrders = useMemo(() => {
         const safeOrders = Array.isArray(orders) ? orders : [];
-        return safeOrders.filter(order => {
-            const id = order._id ? order._id.toString().toLowerCase() : '';
-            const matchesSearch = id.includes(searchTerm.toLowerCase());
-            const matchesStatus = statusFilter === 'All' || order.orderStatus === statusFilter;
-            return matchesSearch && matchesStatus;
-        });
+        
+        return safeOrders
+            .filter(order => {
+                const id = order._id ? order._id.toString().toLowerCase() : '';
+                const matchesSearch = id.includes(searchTerm.toLowerCase());
+                const matchesStatus = statusFilter === 'All' || order.orderStatus === statusFilter;
+                return matchesSearch && matchesStatus;
+            })
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            
     }, [orders, searchTerm, statusFilter]);
 
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -168,45 +143,17 @@ const Orders = () => {
     const totalPages = Math.ceil(filteredOrders.length / itemsPerPage);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    // --- RENDER ---
     return (
         <div className="min-h-screen bg-gray-100 p-4 md:p-8 relative">
             <div className="max-w-7xl mx-auto">
-                {/* Page Header */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
-                    <div>
-                        <h1 className="text-3xl font-bold text-blue-900">Orders</h1>
-                        <p className="text-gray-500 mt-1">Manage and track customer orders.</p>
-                    </div>
-                    <button onClick={handleExportCSV} className="flex items-center gap-2 bg-white border border-gray-300 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-50 transition shadow-sm">
-                        <FaDownload /> Export CSV
-                    </button>
+                
+                <div className="mb-8 gap-4">
+                    <h1 className="text-3xl font-bold text-blue-900">Orders</h1>
+                    <p className="text-gray-500 mt-1">Manage and track customer orders.</p>
                 </div>
 
-                {/* Stats Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                    {[
-                        { label: 'Total Orders', val: orders.length, icon: <FaCheckCircle />, color: 'text-blue-600', bg: 'bg-blue-100' },
-                        { label: 'Pending', val: orders.filter(o => o.paymentStatus === 'Pending').length, icon: <FaClock />, color: 'text-yellow-600', bg: 'bg-yellow-100' },
-                        { label: 'Processing', val: orders.filter(o => o.orderStatus === 'Processing').length, icon: <FaShippingFast />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
-                        { label: 'Cancelled', val: orders.filter(o => o.orderStatus === 'Cancelled').length, icon: <FaTimesCircle />, color: 'text-red-600', bg: 'bg-red-100' }
-                    ].map((stat, i) => (
-                        <div key={i} className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
-                            <div>
-                                <p className="text-gray-500 text-sm font-medium">{stat.label}</p>
-                                <h3 className="text-2xl font-bold text-gray-800 mt-1">{stat.val}</h3>
-                            </div>
-                            <div className={`p-3 rounded-full ${stat.bg} ${stat.color} text-xl`}>
-                                {stat.icon}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Main Table Section */}
                 <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                     
-                    {/* Search & Filter Bar */}
                     <div className="p-5 border-b border-gray-200 flex flex-col md:flex-row gap-4 justify-between items-center bg-gray-50/50">
                         <div className="relative w-full md:w-96">
                             <FaSearch className="absolute left-3 top-3.5 text-gray-400" />
@@ -235,7 +182,6 @@ const Orders = () => {
                         </div>
                     </div>
 
-                    {/* Table */}
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse">
                             <thead>
@@ -256,25 +202,18 @@ const Orders = () => {
                                 ) : currentItems.length > 0 ? (
                                     currentItems.map((order) => (
                                         <tr key={order._id} className="hover:bg-gray-50 transition-colors">
-                                            {/* Order ID */}
                                             <td className="p-4 font-medium text-blue-900 text-xs">
                                                 {order._id.toString().slice(-6).toUpperCase()}
                                                 <div className="text-[10px] text-gray-400 mt-1">Cust: {order.userId.toString().slice(-6).toUpperCase()}</div>
                                             </td>
-
-                                            {/* Product Summary */}
                                             <td className="p-4">
                                                 <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium whitespace-nowrap">
                                                     {order.products?.length || 0} Items
                                                 </span>
                                             </td>
-                                            
-                                            {/* Date */}
                                             <td className="p-4 text-gray-600 whitespace-nowrap">
-                                                {new Date(order.createdAt).toLocaleDateString()}
+                                                {new Date(order.createdAt).toLocaleDateString('en-IN')}
                                             </td>
-
-                                            {/* Address */}
                                             <td className="p-4 text-gray-600 text-[12px] min-w-[150px]">
                                                 {order.shippingAddress ? (
                                                     <>
@@ -285,26 +224,18 @@ const Orders = () => {
                                                     </>
                                                 ) : <span className="text-gray-400">N/A</span>}
                                             </td>
-                                            
-                                            {/* Amount */}
                                             <td className="p-4 font-bold text-gray-800">₹{order.totalAmount}</td>
-                                            
-                                            {/* Payment */}
                                             <td className="p-4">
                                                 <span className={`px-2 py-1 rounded-full text-xs font-semibold ${order.paymentStatus === 'Paid' ? 'text-green-600 bg-green-50' : 'text-red-600 bg-red-50'}`}>
                                                     {order.paymentStatus}
                                                 </span>
                                                 <div className="text-[10px] text-gray-400 mt-1">{order.paymentMethod}</div>
                                             </td>
-                                            
-                                            {/* Status */}
                                             <td className="p-4">
                                                 <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(order.orderStatus)}`}>
                                                     {order.orderStatus}
                                                 </span>
                                             </td>
-                                            
-                                            {/* Actions */}
                                             <td className="p-4 text-center">
                                                 <div className="flex items-center justify-center gap-2">
                                                     <button onClick={() => openDetailsModal(order)} className="p-2 hover:bg-blue-100 text-blue-600 rounded transition" title="View Details">
@@ -326,8 +257,6 @@ const Orders = () => {
                             </tbody>
                         </table>
                     </div>
-                    
-                    {/* Pagination */}
                     {filteredOrders.length > 0 && (
                         <div className="p-4 border-t border-gray-200 flex justify-between items-center text-sm text-gray-600">
                             <p>Page {currentPage} of {totalPages}</p>
@@ -339,8 +268,6 @@ const Orders = () => {
                     )}
                 </div>
             </div>
-
-            {/* --- UPDATE MODAL (Handles BOTH Order Status & Payment Status) --- */}
             {isEditModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
                     <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative">
@@ -349,7 +276,6 @@ const Orders = () => {
                         <p className="text-sm text-gray-600 mb-6 border-b pb-2">Order #{selectedOrder?._id}</p>
                         
                         <div className="space-y-4">
-                            {/* Order Status Select */}
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Order Status</label>
                                 <select className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition" value={newStatus} onChange={(e) => setNewStatus(e.target.value)}>
@@ -360,8 +286,6 @@ const Orders = () => {
                                     <option value="Cancelled">Cancelled</option>
                                 </select>
                             </div>
-
-                            {/* Payment Status Select (NEW) */}
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Payment Status</label>
                                 <select className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition" value={newPaymentStatus} onChange={(e) => setNewPaymentStatus(e.target.value)}>
@@ -380,13 +304,10 @@ const Orders = () => {
                     </div>
                 </div>
             )}
-
-            {/* --- ORDER DETAILS MODAL (PRODUCTS) --- */}
             {isDetailsModalOpen && selectedOrderDetails && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm p-4">
-                    <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
+                    <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col ml-46">
                         
-                        {/* Modal Header */}
                         <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50 rounded-t-xl">
                             <div>
                                 <h3 className="text-xl font-bold text-gray-800">Order Details</h3>
@@ -397,15 +318,14 @@ const Orders = () => {
                             </button>
                         </div>
 
-                        {/* Modal Body - Scrollable */}
                         <div className="p-6 overflow-y-auto">
-                            {/* Product Table */}
                             <h4 className="font-semibold text-gray-700 mb-4">Product List ({selectedOrderDetails.products?.length || 0})</h4>
                             <div className="border border-gray-200 rounded-lg overflow-hidden mb-6">
                                 <table className="w-full text-sm text-left">
                                     <thead className="bg-gray-100 text-gray-600 font-medium">
                                         <tr>
-                                            <th className="p-3">Product ID / Name</th>
+                                            <th className="p-3">Product ID </th>
+                                            <th className="p-3 text-center">Name</th>
                                             <th className="p-3 text-center">Qty</th>
                                             <th className="p-3 text-right">Price</th>
                                             <th className="p-3 text-right">Subtotal</th>
@@ -415,8 +335,13 @@ const Orders = () => {
                                         {selectedOrderDetails.products?.map((item, index) => (
                                             <tr key={index} className="hover:bg-gray-50">
                                                 <td className="p-3 text-gray-700">
-                                                    <div className="font-medium truncate max-w-[200px]" title={item.productId?.name || item.productId}>
-                                                        {item.productId?.name || item.productId.toString().slice(-6).toUpperCase()}
+                                                    <div className="font-medium truncate max-w-[200px]" title={item.productId}>
+                                                        {item.productId}
+                                                    </div>
+                                                </td>
+                                                <td className="p-3 text-gray-700">
+                                                    <div className="font-medium max-w-[200px]" title={item.name}>
+                                                        {item.name}
                                                     </div>
                                                 </td>
                                                 <td className="p-3 text-center text-gray-600">{item.qty}</td>
@@ -429,14 +354,12 @@ const Orders = () => {
                                     </tbody>
                                     <tfoot className="bg-gray-50 font-bold text-gray-800">
                                         <tr>
-                                            <td colSpan="3" className="p-3 text-right">Grand Total:</td>
+                                            <td colSpan="4" className="p-3 text-right">Grand Total:</td>
                                             <td className="p-3 text-right">₹{selectedOrderDetails.totalAmount}</td>
                                         </tr>
                                     </tfoot>
                                 </table>
                             </div>
-
-                            {/* Shipping Info Block */}
                             {selectedOrderDetails.shippingAddress && (
                                 <div className="bg-blue-50 p-4 rounded-lg">
                                     <h4 className="font-semibold text-blue-800 mb-2 text-sm flex items-center gap-2"><FaShippingFast/> Shipping Details</h4>
@@ -449,7 +372,6 @@ const Orders = () => {
                             )}
                         </div>
 
-                        {/* Modal Footer */}
                         <div className="p-4 border-t border-gray-100 flex justify-end">
                             <button 
                                 onClick={() => setIsDetailsModalOpen(false)} 

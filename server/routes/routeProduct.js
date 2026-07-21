@@ -30,9 +30,6 @@ routerProduct.get('/products/search/:key', searchProducts);
 routerProduct.get('/products/sub/:subname', getProductsBySubCategory)
 routerProduct.get('/products/filters/', getProductFilters);
 
-
-//CLIENT SIDE
-//Viewing of products
 routerProduct.get('/products/all', viewProductsData);
 
 module.exports = routerProduct;

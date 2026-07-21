@@ -69,7 +69,7 @@ const ProductSpecs = ({ product }) => {
       );
 
     /* ================= AUDIO DEVICES ================= */
-    case "AudioDevices":
+    case "Audio Devices":
       return (
         <SpecsWrapper>
           <Spec label="Type" value={specs.type} />
@@ -375,5 +375,4 @@ const ProductSpecs = ({ product }) => {
 };
 
 export default ProductSpecs;
-
 

@@ -6,20 +6,15 @@ import {
     FaCheckCircle, FaChevronDown, FaChevronUp, FaStar, FaSpinner,
     FaSave, FaTimes, FaCopy 
 } from 'react-icons/fa';
-
 import { getProducts, deleteProduct, updateProduct } from '../../service/api';
-
 const Products = () => {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
     const [searchTerm, setSearchTerm] = useState('');
     const [categoryFilter, setCategoryFilter] = useState('All');
     const [expandedRow, setExpandedRow] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(5); 
-
-    // --- IN-TABLE EDIT STATE ---
     const [editProductId, setEditProductId] = useState(null);
     const [editFormData, setEditFormData] = useState({
         name: '',
@@ -29,7 +24,6 @@ const Products = () => {
         stock: '',
         taxClass: ''
     });
-
     useEffect(() => {
         fetchProductData();
     }, []);
@@ -37,7 +31,6 @@ const Products = () => {
     useEffect(() => {
         setCurrentPage(1);
     }, [searchTerm, categoryFilter]);
-
     const fetchProductData = async () => {
         setIsLoading(true);
         try {
@@ -56,7 +49,6 @@ const Products = () => {
             setIsLoading(false);
         }
     };
-
     const handleDeleteClick = async (id) => {
         if(window.confirm("Are you sure you want to delete this product?")) {
             const response = await deleteProduct(id);
@@ -69,39 +61,29 @@ const Products = () => {
             }
         }
     }
-
     const handleEditClick = (event, product) => {
         event.preventDefault();
-        setEditProductId(product.id);
-        
+        setEditProductId(product.id); 
         setEditFormData({
             name: product.name,
             brand: product.brand,
             price: product.basePrice,
             discount: product.discount || 0,
             stock: product.stockLevel,
-            taxClass: product.taxClass || 0 // Load as number
+            taxClass: product.taxClass || 0
         });
     }
-
     const handleEditFormChange = (event) => {
         const { name, value } = event.target;
         setEditFormData({ ...editFormData, [name]: value });
     }
-
     const handleCancelClick = () => {
         setEditProductId(null);
     }
-
     const handleSaveClick = async (id) => {
-        // 1. Call Backend
         const response = await updateProduct(id, editFormData);
-        
-        // 2. Check if success
-        if (response && (response.status === 200 || response.status === 201)) {
-            
+        if (response && (response.status === 200 || response.status === 201)) { 
             const updatedBackendData = response.data.data;
-
             const updatedProducts = products.map((product) => {
                 if (product.id === id) {
                     return { 
@@ -112,17 +94,12 @@ const Products = () => {
                         discount: updatedBackendData.discount,
                         stockLevel: updatedBackendData.stock,
                         taxClass: updatedBackendData.taxClass || updatedBackendData.tax, 
-                        
-                        // CRITICAL: Use the salePrice calculated by backend
-                        salePrice: updatedBackendData.salePrice || (updatedBackendData.price - updatedBackendData.discount), 
-                        
-                        // Recalculate status for UI immediately
+                        salePrice: updatedBackendData.salePrice || (updatedBackendData.price - updatedBackendData.discount),
                         status: updatedBackendData.stock === 0 ? 'Out of Stock' : (updatedBackendData.stock < 5 ? 'Low Stock' : 'In Stock')
                     };
                 }
                 return product;
             });
-
             setProducts(updatedProducts);
             setEditProductId(null);
             alert("Product Updated Successfully");
@@ -130,22 +107,18 @@ const Products = () => {
             alert("Failed to update product");
         }
     }
-
     const toggleRow = (id) => {
         setExpandedRow(expandedRow === id ? null : id);
     };
-
     const copyToClipboard = (text) => {
         navigator.clipboard.writeText(text);
         alert("ID copied: " + text);
     };
-
     const getStockColor = (level) => {
         if (level === 0) return 'text-red-600 bg-red-100';
         if (level < 15) return 'text-orange-600 bg-orange-100';
         return 'text-green-600 bg-green-100';
     };
-
     const filteredProducts = useMemo(() => {
         const safeProducts = Array.isArray(products) ? products : [];
         return safeProducts.filter(product => {
@@ -156,13 +129,32 @@ const Products = () => {
             return matchesSearch && matchesCategory;
         });
     }, [products, searchTerm, categoryFilter]);
-
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
     const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
+    const getPageNumbers = () => {
+        const pages = [];
+        const maxVisiblePages = 5;
+        if (totalPages <= maxVisiblePages) {
+            for (let i = 1; i <= totalPages; i++) pages.push(i);
+        } else {
+            pages.push(1);
+            if (currentPage > 3) pages.push('...');
+            let start = Math.max(2, currentPage - 1);
+            let end = Math.min(totalPages - 1, currentPage + 1);
+            if (currentPage <= 2) end = 4;
+            if (currentPage >= totalPages - 1) start = totalPages - 3;
+            for (let i = start; i <= end; i++) {
+                if (!pages.includes(i)) pages.push(i);
+            }
+            if (currentPage < totalPages - 2) pages.push('...');
+            if (!pages.includes(totalPages)) pages.push(totalPages);
+        }
+        return pages;
+    };
+    
     return (
         <div className="min-h-screen bg-gray-100 p-4 md:p-8">
             <div className="max-w-7xl mx-auto">
@@ -172,11 +164,6 @@ const Products = () => {
                         <p className="text-gray-500 mt-1">Manage your inventory and product details.</p>
                     </div>
                     <div className="flex gap-3">
-                        <Link to="/products/bulk-product-upload">
-                            <button className="flex items-center gap-2 bg-white border border-blue-900 text-blue-900 px-4 py-2 rounded-lg hover:bg-blue-50 transition shadow-sm font-medium">
-                              <FaCloudUploadAlt /> Bulk Upload
-                            </button>
-                        </Link>
                         <Link to="/products/add-product">
                             <button className="flex items-center gap-2 bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition shadow-sm font-medium">
                                 <FaPlus /> Add Product
@@ -184,7 +171,6 @@ const Products = () => {
                         </Link>
                     </div>
                 </div>
-
                 <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                     <div className="p-5 border-b border-gray-200 flex flex-col md:flex-row gap-4 justify-between items-center bg-gray-50/50">
                         <div className="relative w-full md:w-96">
@@ -207,11 +193,13 @@ const Products = () => {
                                 <option value="All">All Categories</option>
                                 <option value="Electronics">Electronics</option>
                                 <option value="Fashion">Fashion</option>
-                                <option value="Home">Home</option>
+                                <option value="HomeAppliaces">Home Appliances</option>
+                                <option value="Furniture">Furniture</option>
+                                <option value="BooksToys">Books & Toys</option>
+                                <option value="BeautyHealth">Beauty & Health</option>
                             </select>
                         </div>
                     </div>
-
                     <div className="overflow-x-auto">
                         {isLoading ? (
                             <div className="p-12 text-center text-gray-500 flex flex-col items-center">
@@ -224,11 +212,9 @@ const Products = () => {
                                     <tr className="bg-gray-100 text-gray-600 text-xs uppercase tracking-wider">
                                         <th className="p-4 border-b"></th>
                                         <th className="p-4 font-semibold border-b">ID</th> 
-                                        
                                         <th className="p-4 font-semibold border-b">Product Name</th>
                                         <th className="p-4 font-semibold border-b">Category</th>
-                                        <th className="p-4 font-semibold border-b">Brand</th>                           
-        
+                                        <th className="p-4 font-semibold border-b">Brand</th>
                                         <th className="p-4 font-semibold border-b">Base Price</th>
                                         <th className="p-4 font-semibold border-b">Discount</th>
                                         <th className="p-4 font-semibold border-b">Tax (%)</th>
@@ -241,14 +227,12 @@ const Products = () => {
                                     {currentItems.length > 0 ? (
                                         currentItems.map((product) => (
                                             <React.Fragment key={product.id}>
-                                                <tr className={`hover:bg-gray-50 transition-colors ${expandedRow === product.id ? 'bg-blue-50/30' : ''}`}>
-                                                    
+                                                <tr className={`hover:bg-gray-50 transition-colors ${expandedRow === product.id ? 'bg-blue-50/30' : ''}`}>                                                    
                                                     <td className="p-4 text-center w-10">
                                                         <button onClick={() => toggleRow(product.id)} className="text-gray-500 hover:text-blue-900">
                                                             {expandedRow === product.id ? <FaChevronUp /> : <FaChevronDown />}
                                                         </button>
                                                     </td>
-
                                                     <td className="p-4">
                                                         <div 
                                                             className="flex items-center gap-1 group cursor-pointer" 
@@ -261,41 +245,35 @@ const Products = () => {
                                                             <FaCopy className="text-gray-300 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity" />
                                                         </div>
                                                     </td>
-
                                                     <td className="p-4 font-medium text-blue-900">
                                                         {editProductId === product.id ? (
                                                             <input type="text" name="name" value={editFormData.name} onChange={handleEditFormChange} className="w-full p-1 border rounded" />
                                                         ) : product.name}
                                                     </td>
-
                                                     <td className="p-4">
                                                         <div className="text-gray-800">{product.category}</div>
                                                         <div className="text-xs text-gray-500">{product.subCategory}</div>
                                                     </td>
-
                                                     <td className="p-4 text-gray-600">
                                                         {editProductId === product.id ? (
                                                             <input type="text" name="brand" value={editFormData.brand} onChange={handleEditFormChange} className="w-full p-1 border rounded" />
                                                         ) : product.brand}
                                                     </td>
-
                                                     <td className="p-4 text-gray-600">
                                                         {editProductId === product.id ? (
                                                             <input type="number" name="price" value={editFormData.price} onChange={handleEditFormChange} className="w-20 p-1 border rounded" />
                                                         ) : `₹${(product.basePrice || 0).toLocaleString()}`}
                                                     </td>
-
                                                     <td className="p-4 text-red-500 font-medium">
                                                         {editProductId === product.id ? (
                                                             <input type="number" name="discount" value={editFormData.discount} onChange={handleEditFormChange} className="w-16 p-1 border rounded text-red-600" />
                                                         ) : `₹${(product.discount || 0).toLocaleString()}`}
                                                     </td>
-
                                                     <td className="p-4">
                                                         {editProductId === product.id ? (
                                                             <input 
                                                                 type="number" 
-                                                                name="taxClass" // Assuming backend expects 'taxClass'
+                                                                name="taxClass"
                                                                 value={editFormData.taxClass} 
                                                                 onChange={handleEditFormChange} 
                                                                 className="w-16 p-1 border rounded text-xs"
@@ -307,21 +285,18 @@ const Products = () => {
                                                             </span>
                                                         )}
                                                     </td>
-
                                                     <td className="p-4 font-bold text-green-700 text-base">
                                                         ₹{(product.salePrice || 0).toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 2})}
                                                     </td>
-
                                                     <td className="p-4">
                                                         {editProductId === product.id ? (
                                                             <input type="number" name="stock" value={editFormData.stock} onChange={handleEditFormChange} className="w-16 p-1 border rounded" />
                                                         ) : (
                                                             <span className={`px-2 py-1 rounded-full text-xs font-semibold ${getStockColor(product.stockLevel)}`}>
-                                                                {product.stockLevel} units
+                                                                {product.stockLevel}
                                                             </span>
                                                         )}
                                                     </td>
-
                                                     <td className="p-4 text-center">
                                                         <div className="flex items-center justify-center gap-2">
                                                             {editProductId === product.id ? (
@@ -343,7 +318,6 @@ const Products = () => {
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                
                                                 {expandedRow === product.id && (
                                                     <tr className="bg-gray-50">
                                                         <td colSpan="11" className="p-4 md:p-6 border-b border-gray-200 shadow-inner">
@@ -392,11 +366,38 @@ const Products = () => {
                         <div className="p-4 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between text-sm text-gray-600 gap-4">
                             <p>Showing <span className="font-medium">{indexOfFirstItem + 1}</span> to <span className="font-medium">{Math.min(indexOfLastItem, filteredProducts.length)}</span> of <span className="font-medium">{filteredProducts.length}</span> items</p>
                             <div className="flex gap-2">
-                                <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} className={`px-3 py-1 border rounded transition ${currentPage === 1 ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'hover:bg-gray-50'}`}>Previous</button>
-                                {[...Array(totalPages)].map((_, i) => (
-                                    <button key={i + 1} onClick={() => paginate(i + 1)} className={`px-3 py-1 border rounded transition ${currentPage === i + 1 ? 'bg-blue-900 text-white border-blue-900' : 'hover:bg-gray-50'}`}>{i + 1}</button>
-                                ))}
-                                <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages} className={`px-3 py-1 border rounded transition ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'hover:bg-gray-50'}`}>Next</button>
+                                <div className="flex flex-wrap justify-center gap-2">
+                                    <button 
+                                        onClick={() => paginate(currentPage - 1)} 
+                                        disabled={currentPage === 1} 
+                                        className={`px-3 py-1 border rounded transition ${currentPage === 1 ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'hover:bg-gray-50'}`}
+                                    >
+                                        Previous
+                                    </button>
+                                    {getPageNumbers().map((page, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => typeof page === 'number' && paginate(page)}
+                                            disabled={page === '...'}
+                                            className={`px-3 py-1 border rounded transition ${
+                                                currentPage === page 
+                                                    ? 'bg-blue-900 text-white border-blue-900' 
+                                                    : page === '...' 
+                                                        ? 'cursor-default border-transparent' 
+                                                        : 'hover:bg-gray-50'
+                                            }`}
+                                        >
+                                            {page}
+                                        </button>
+                                    ))}
+                                    <button 
+                                        onClick={() => paginate(currentPage + 1)} 
+                                        disabled={currentPage === totalPages} 
+                                        className={`px-3 py-1 border rounded transition ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'hover:bg-gray-50'}`}
+                                    >
+                                        Next
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     )}

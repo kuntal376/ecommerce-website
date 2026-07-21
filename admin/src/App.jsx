@@ -25,7 +25,6 @@ import BooksToys from './Pages/Category/Books & Toys/BooksToys'
 import Sports from './Pages/Category/Sports/sports'
 import BeautyHealth from './Pages/Category/Beauty & Health/beautyHealth'
 import AddProducts from './Pages/Add Products/addProducts'
-import BulkUpload from './Pages/Bulk Product Upload/bulkProductUpload'
 import SignIn from './Pages/Login/login'
 import SignUp from './Pages/Sign Up/signUp'
 import ForgotPassword from './Pages/Forgot Password/forgotPassword'
@@ -209,22 +208,6 @@ function App() {
             </div>
             <div className='containRight py-5 px-5 w-[86%]'>
               <AddProducts/>
-            </div>
-          </div>
-        </section>
-      )
-    },
-    {
-      path: "/products/bulk-product-upload",
-      element: (
-        <section className='main'>
-          <Header/>
-          <div className='containMain flex'>
-            <div className='sidebarWrapper w-[15%]'>
-              <SideBarProducts/>
-            </div>
-            <div className='containRight py-5 px-5 w-[86%]'>
-              <BulkUpload/>
             </div>
           </div>
         </section>

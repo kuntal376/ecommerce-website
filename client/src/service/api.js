@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// Replace with your actual Backend URL
-const URL = 'http://localhost:5000';
+const URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 export const authenticateSignup = async (data) => {
     try {

@@ -175,7 +175,6 @@ const getProductsBySubCategory = async (request, response) => {
     }
 }
 
-//fetching products filter
 const getProductFilters = async (req, res) => {
   try {
     const { subCategory } = req.query;
@@ -212,7 +211,6 @@ const getProductFilters = async (req, res) => {
         filters[spec] = mergedValues.map(item => item._id);
         
       } else if (spec !== 'capacityUnit') { 
-        // Normal logic for everything else (skipping capacityUnit as a standalone list)
         const values = await Product.distinct(`specs.${spec}`, query);
         if (values.length > 0) {
           filters[spec] = values;
@@ -226,18 +224,9 @@ const getProductFilters = async (req, res) => {
     console.error(err);
     res.status(500).json({ message: "Filter fetch failed" });
   }
-};
+}
 
 
-
-
-
-
-
-
-//CLIENT SIDE (ecom)
-
-// view of database products
 const viewProductsData = async(req,res) =>{
     try {
         const products = await Product.find({});      // find all data
@@ -246,7 +235,6 @@ const viewProductsData = async(req,res) =>{
         console.log("Error while getting Data", error);
     }
 }
-
 
 
 

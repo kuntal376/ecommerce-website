@@ -51,7 +51,6 @@ const SearchResults = () => {
                         {products.map((product) => (
                             <div key={product._id} className="bg-white rounded shadow hover:shadow-lg transition flex flex-col relative overflow-hidden group">
                                 
-                                {/* 1. The Link wraps the Image & Title ONLY */}
                                 <Link to={`/product/${product._id}`} className="flex-1 p-4 flex flex-col">
                                     <div className="h-40 w-full flex items-center justify-center mb-4 relative">
                                         <img 
@@ -64,7 +63,6 @@ const SearchResults = () => {
                                     <p className="text-xs text-gray-500 mb-2">{product.category}</p>
                                 </Link>
 
-                                {/* 2. Price & Button Section (Outside Link to avoid conflict) */}
                                 <div className="p-4 pt-0 mt-auto flex items-center justify-between border-t border-gray-50 pt-3">
                                     <span className="font-bold text-blue-900 text-lg">₹{Math.round((product.price - product.discount) + (product.price - product.discount) *  product.taxClass/100).toLocaleString("en-IN")}</span>
                                     

@@ -5,7 +5,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { IoStorefront, IoAdd } from "react-icons/io5";
 
-// --- UPDATED IMPORT PATH ---
 import { addProduct } from '../../service/api';
 
 import Mobiles from './Electronics/mobiles';
@@ -118,7 +117,6 @@ const AddProducts = () => {
         console.log(product);
   }
 
-
   const handleExtraDataChange = (newData) => {
     setExtraFormData(newData);
   };
@@ -162,7 +160,7 @@ const AddProducts = () => {
 
         if (hasEmptyFields) {
             alert("Please fill ALL Basic Info and Market Info fields.");
-            return; // Stop execution here
+            return;
         }
 
 
@@ -172,7 +170,7 @@ const AddProducts = () => {
         });
         formData.append('name', product.name);
         formData.append('brand', product.brand);
-        formData.append('description', product.description || ''); // Handle optional description
+        formData.append('description', product.description || '');
         formData.append('category', category);
         formData.append('subCategory', subCategory);
         formData.append('orders', JSON.stringify([]));
@@ -190,23 +188,19 @@ const AddProducts = () => {
             formData.append('taxClass', extraFormData.taxClass);
         }
 
-        // Append the extra data
         Object.keys(extraFormData).forEach((key) => {
              if (key !== 'price' && key !== 'stock' && key !== 'discount' && key !== 'taxClass') {
                  formData.append(key, extraFormData[key]);
              }
         });
 
-        // Debugging
         console.log("Submitting the following:");
         for (var pair of formData.entries()) {
             console.log(pair[0]+ ': ' + pair[1]); 
         }
-
-        // API Call...
         try {
             const res = await addProduct(formData);
-            if(res.status === 201){ // Assuming your backend returns 201 for success
+            if(res.status === 201){
               alert("Product Added Successfully!");
               setCategory('');
               setSubCategory(''); 

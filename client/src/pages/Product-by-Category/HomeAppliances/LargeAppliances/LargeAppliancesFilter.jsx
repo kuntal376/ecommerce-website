@@ -47,6 +47,10 @@ const LargeAppliancesFilter = ({ filters, setFilters, subCategory }) => {
     fetchFilters();
   }, [subCategory]);
 
+    useEffect(() => {
+        console.log("dynamicFilters received:", dynamicFilters);
+      }, [dynamicFilters]);
+
   return (
     <aside className="w-full bg-white border rounded-md p-4 shadow-sm h-min">
       <div className="flex justify-between items-center mb-4">

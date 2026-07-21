@@ -84,7 +84,15 @@ module.exports = {
     specs: ["type", "material", "capacity"],
   },
 
-    "Bedroom":{
+  "Kids": {
+    specs:[
+      "dressType",
+      "fabric",
+    ]
+  },
+
+  
+  "Bedroom":{
     specs: [
       "furnitureType",
     ]
@@ -126,12 +134,12 @@ module.exports = {
     ]
   },
 
-  "Books": {
+  Books: {
     specs: ["bookType", "author", "publisher"],
   },
 
   "Toys and Games": {
-    specs: ["categoryType", "ageGroup", "material", "skillSet"],
+    specs: ["categoryType"],
   },
 
   "Home Comforts": {
@@ -153,7 +161,7 @@ module.exports = {
     specs:[
       "applianceType",
       "capacityValue",
-      "capacityUnit",
+      "capacityUnit"
     ]
   },
 
@@ -180,4 +188,6 @@ module.exports = {
       "gameType"
     ],
   },
+  
 };
+

@@ -40,12 +40,10 @@ const Archive = () => {
             </ul>
             {products.length === 0 && <p className="text-sm text-gray-500">Loading links...</p>}
 
-            {/* Title */}
             <h3 className="text-xl font-bold text-blue-500 mb-3 inline-block">
                 E-Shop
             </h3>
 
-            {/* Introduction */}
             <p className="text-gray-600 text-sm mb-6 leading-relaxed">
                 Welcome to E-Shop, where quality meets affordability. We are your one-stop 
                 destination for the latest trends in fashion, cutting-edge electronics, 
@@ -58,12 +56,10 @@ const Archive = () => {
                 At E-Shop, we think Shopping ought to be an experience characterized by trust, openness, and complete fulfillment rather than only a transaction.
             </p>
 
-            {/* Why Choose Us Section */}
             <h4 className="text-md font-bold text-gray-800 mb-3">Why Choose Us?</h4>
             
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 
-                {/* Feature 1 */}
                 <div className="flex items-start gap-3">
                     <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
                     <div>
@@ -72,7 +68,6 @@ const Archive = () => {
                     </div>
                 </div>
 
-                {/* Feature 2 */}
                 <div className="flex items-start gap-3">
                     <FaShippingFast className="text-blue-500 mt-1 flex-shrink-0" />
                     <div>
@@ -81,7 +76,6 @@ const Archive = () => {
                     </div>
                 </div>
 
-                {/* Feature 3 */}
                 <div className="flex items-start gap-3">
                     <FaShieldAlt className="text-orange-500 mt-1 flex-shrink-0" />
                     <div>
@@ -90,7 +84,6 @@ const Archive = () => {
                     </div>
                 </div>
 
-                {/* Feature 4 */}
                 <div className="flex items-start gap-3">
                     <FaHeadset className="text-purple-500 mt-1 flex-shrink-0" />
                     <div>
@@ -99,7 +92,6 @@ const Archive = () => {
                     </div>
                 </div>
 
-                {/* 5. Easy Returns */}
                 <div className="flex items-start gap-3">
                     <FaUndo className="text-red-500 mt-1 text-lg flex-shrink-0" />
                     <div>
@@ -108,7 +100,6 @@ const Archive = () => {
                     </div>
                 </div>
 
-                {/* 6. Best Deals */}
                 <div className="flex items-start gap-3">
                     <FaTags className="text-yellow-600 mt-1 text-lg flex-shrink-0" />
                     <div>
@@ -117,7 +108,6 @@ const Archive = () => {
                     </div>
                 </div>
 
-                {/* 7. Wide Selection */}
                 <div className="flex items-start gap-3">
                     <FaGlobe className="text-teal-600 mt-1 text-lg flex-shrink-0" />
                     <div>
@@ -126,7 +116,6 @@ const Archive = () => {
                     </div>
                 </div>
 
-                {/* 8. Trusted Reviews */}
                 <div className="flex items-start gap-3">
                     <FaStar className="text-indigo-600 mt-1 text-lg flex-shrink-0" />
                     <div>

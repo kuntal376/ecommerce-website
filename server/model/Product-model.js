@@ -21,7 +21,6 @@ const productSchema = new mongoose.Schema({
             name: { type: String },
             date: { type: String },
             qty: { type: Number },
-            status: { type: String },
         }
     ],
 

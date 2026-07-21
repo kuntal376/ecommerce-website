@@ -68,16 +68,6 @@ const Sidebar = ({ activeTab, setActiveTab, user }) => {
                 </div>
                 <button onClick={() => setActiveTab('upi')} className={getTabClass('upi')}>Saved UPI</button>
                 <button onClick={() => setActiveTab('cards')} className={getTabClass('cards')}>Saved Cards</button>
-
-                <div className="border-t border-gray-100 my-2"></div>
-
-                <div className="px-4 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center gap-2">
-                    <FaBoxOpen /> My Stuff
-                </div>
-                <button onClick={() => setActiveTab('wishlist')} className={getTabClass('wishlist')}>My Wishlist</button>
-                <button onClick={() => setActiveTab('orders')} className={getTabClass('orders')}>My Orders</button>
-
-                <div className="border-t border-gray-100 mt-2"></div>
                 
                 <button onClick={() => { localStorage.clear(); window.location.href='/login' }} className="w-full text-left px-4 py-4 text-sm font-semibold text-gray-500 hover:text-blue-600 transition flex items-center gap-3">
                     <FaPowerOff /> Logout
@@ -410,8 +400,6 @@ const Settings = () => {
             case 'password': return <PasswordView />;
             case 'upi': return <div className="p-10 text-center text-gray-500"><FaMobileAlt className="text-4xl mx-auto mb-2 text-gray-300"/>No Saved UPI</div>;
             case 'cards': return <div className="p-10 text-center text-gray-500"><FaCreditCard className="text-4xl mx-auto mb-2 text-gray-300"/>No Saved Cards</div>;
-            case 'wishlist': return <div className="p-10 text-center text-gray-500"><FaBoxOpen className="text-4xl mx-auto mb-2 text-gray-300"/>Empty Wishlist</div>;
-            case 'orders': return <div className="p-10 text-center text-gray-500"><FaBoxOpen className="text-4xl mx-auto mb-2 text-gray-300"/>No Orders Yet</div>;
             default: return <ProfileView />;
         }
     };

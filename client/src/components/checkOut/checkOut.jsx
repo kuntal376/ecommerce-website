@@ -10,22 +10,17 @@ const Checkout = () => {
     const navigate = useNavigate();
     const { emptyCart } = useCart();
     
-    // Retrieve data passed from Cart page
     const { items, totalAmount } = location.state || {};
 
-    // State Management
     const [addresses, setAddresses] = useState([]);
     const [selectedAddressIndex, setSelectedAddressIndex] = useState(0); 
-    const [paymentMethod, setPaymentMethod] = useState("COD"); // 'COD' or 'ONLINE'
+    const [paymentMethod, setPaymentMethod] = useState("COD");
     const [loading, setLoading] = useState(false);
     const [pageLoading, setPageLoading] = useState(true);
 
-    // --- 1. Fetch User Addresses on Mount ---
     useEffect(() => {
         const fetchAddresses = async () => {
             const userId = getUserId();
-            
-            // Redirect if user is guest or accessed directly without cart items
             if (!userId) { navigate('/login'); return; }
             if (!items || items.length === 0) { navigate('/cart'); return; }
 
@@ -43,7 +38,6 @@ const Checkout = () => {
         fetchAddresses();
     }, []);
 
-    // --- 2. Helper: Load Razorpay Script ---
     const loadScript = (src) => {
         return new Promise((resolve) => {
             const script = document.createElement("script");
@@ -54,11 +48,10 @@ const Checkout = () => {
         });
     };
 
-    // --- 3. Handle Order Confirmation ---
     const handleConfirmOrder = async () => {
         if (addresses.length === 0) {
             alert("Please add a delivery address first.");
-            navigate('/settings'); // Redirect to profile to add address
+            navigate('/settings')
             return;
         }
 
@@ -66,11 +59,12 @@ const Checkout = () => {
         const userId = getUserId();
         const address = addresses[selectedAddressIndex];
         
-        // Prepare Payload
         const productPayload = items.map(item => ({
             productId: item.productId,
             qty: item.qty,
-            price: item.finalPrice
+            price: item.finalPrice,
+            name: item.name,
+            image: item.image,
         }));
 
         try {
@@ -92,13 +86,11 @@ const Checkout = () => {
                 }
             } 
             
-            // --- OPTION B: ONLINE PAYMENT (RAZORPAY) ---
+            // --- ONLINE PAYMENT (RAZORPAY) ---
             else {
-                // 1. Load Script
                 const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
                 if (!res) { alert("Razorpay SDK failed to load. Check internet."); setLoading(false); return; }
 
-                // 2. Create Order on Backend (Get Order ID)
                 const result = await processPayment(totalAmount);
                 if (!result || result.status !== 200) { 
                     alert("Server error processing payment."); 
@@ -135,7 +127,7 @@ const Checkout = () => {
                         }
                     },
                     prefill: {
-                        name: "Customer Name", // Ideally fetch from user details
+                        name: "Customer Name",
                         email: "customer@example.com",
                         contact: "9999999999",
                     },
@@ -145,7 +137,6 @@ const Checkout = () => {
                 const paymentObject = new window.Razorpay(options);
                 paymentObject.open();
                 
-                // If user closes modal without paying
                 paymentObject.on('payment.failed', function (response){
                     alert("Payment Failed: " + response.error.description);
                     setLoading(false);
@@ -160,10 +151,10 @@ const Checkout = () => {
     };
 
     const finalizeOrder = async () => {
-        await emptyCart(); // Clear cart context
+        await emptyCart();
         setLoading(false);
         alert("🎉 Order Placed Successfully!");
-        navigate('/orders'); // Redirect to My Orders
+        navigate('/orders');
     };
 
     if (pageLoading) return (

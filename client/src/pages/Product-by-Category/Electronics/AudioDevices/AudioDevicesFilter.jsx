@@ -55,7 +55,7 @@ const AudioDevicesFilter = ({ filters, setFilters, subCategory }) => {
 
   
   return (
-    <aside className="w-full bg-white border rounded-md p-4 shadow-sm h-full">
+    <aside className="w-full bg-white border rounded-md p-4 shadow-sm h-min">
       <div className="flex justify-between items-center mb-4">
           <h2 className="font-semibold text-lg">Filters</h2>
           <button

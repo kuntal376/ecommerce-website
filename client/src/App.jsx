@@ -1,6 +1,18 @@
 import React from 'react'
+import Signup from './pages/signup/signup.jsx'
+import Login from './pages/login/login.jsx'
+import Setting from './pages/setting/setting.jsx'
+import ForgotPassword from './pages/forgot password/forgotPassword.jsx'
+import ResetPassword from './pages/forgot password/resetPassword.jsx'
+import SearchResult from './components/searchResult.jsx'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
+import Cart from './components/Cart/Cart.jsx'
+import Orders from './components/Order/Orders.jsx'
+import OrderDetails from "./components/Order/orderDetails.jsx";
+import Wishlist from './components/Wishlist/Wishlist.jsx'
+import Checkout from './components/checkOut/checkOut.jsx'
+import ProductDetails from './components/ProductDetails/ProductDetails.jsx'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Home from './pages/Home/Home.jsx'
 import Mobiles from './pages/Product-by-Category/Electronics/Mobiles/Mobiles.jsx'
@@ -32,74 +44,73 @@ import SkinCare from './pages/Product-by-Category/Beauty & Health/Skin Care/Skin
 import HairCare from './pages/Product-by-Category/Beauty & Health/Hair Care/HairCare.jsx'
 import ToysandGames from './pages/Product-by-Category/Books & Toys/ToysandGames/ToysandGames.jsx'
 import Books from './pages/Product-by-Category/Books & Toys/Books/Books.jsx'
-import Signup from './pages/signup/signup.jsx'
-import Login from './pages/login/login.jsx'
-import ForgotPassword from './pages/forgot password/forgotPassword.jsx'
-import ResetPassword from './pages/forgot password/resetPassword.jsx'
-import Settings from './pages/setting/setting.jsx'
-import SearchResults from './components/searchResult.jsx'
 
-import Cart from './components/Cart/Cart.jsx'
-import Checkout from './components/checkOut/checkOut.jsx'
-import Orders from './components/Order/Orders.jsx'
-import OrderDetails from "./components/Order/orderDetails.jsx";
-import Wishlist from './components/Wishlist/Wishlist.jsx'
-import ProductDetails from './components/ProductDetails.jsx'
+import HelpCenter from './components/HelpCenter.jsx'
 
 function App() {
 
   return (
     <>
     <Router>
-      <div className='sticky top-0 z-50 shadow-md'><Header /></div>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/Mobiles' element={<Mobiles/>}/>
-        <Route path='/Laptops' element={<Laptops/>}/>
-        <Route path='/Cameras' element={<Cameras/>}/>
-        <Route path='/Tablets' element={<Tablets/>}/>
-        <Route path='/Audio-Devices' element={<AudioDevices/>}/>
-        <Route path='/Men-Top-Wear' element={<MenTopWear/>}/>
-        <Route path='/Men-Bottom-Wear' element={<MenBottomWear/>}/>
-        <Route path='/Women-Top-Wear' element={<WomenTopWear/>}/>
-        <Route path='/Women-Bottom-Wear' element={<WomenBottomWear/>}/>
-        <Route path='/Men-Footwear' element={<MenFootwear/>}/>
-        <Route path='/Women-Footwear' element={<WomenFootwear/>}/>
-        <Route path='/Bags-Luggages' element={<BagsLuggages/>}/>
-        <Route path='/Kids' element={<Kids/>}/>
-        <Route path='/Kitchen-Appliances' element={<KitchenAppliances/>}/>
-        <Route path='/Large-Appliances' element={<LargeAppliances/>}/>
-        <Route path='/Small-Appliances' element={<SmallAppliances/>}/>
-        <Route path='/Home-Comforts' element={<HomeComforts/>}/>
-        <Route path='/Fitness-Equipment' element={<FitnessEquipments/>}/>
-        <Route path='/Outdoor-Sports' element={<OutdoorSports/>}/>
-        <Route path='/Indoor-Games' element={<IndoorGames/>}/>
-        <Route path='/Living-Room' element={<LivingRoom/>}/>
-        <Route path='/Bedroom' element={<Bedroom/>}/>
-        <Route path='/Dining-Room' element={<DiningRoom/>}/>
-        <Route path='/Office-Furniture' element={<OfficeFurniture/>}/>
-        <Route path='/Makeup' element={<Makeup/>}/>
-        <Route path='/Skin-Care' element={<SkinCare/>}/>
-        <Route path='/Hair-Care' element={<HairCare/>}/>
-        <Route path='/Toys-Games' element={<ToysandGames/>}/>
-        <Route path='/Books' element={<Books/>}/>
-        <Route path='/signup' element={<Signup/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password/:token" element={<ResetPassword />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/search" element={<SearchResults />} />
+      <div className="flex flex-col min-h-screen">
+        
+        <div className='sticky top-0 z-50 shadow-md'>
+          <Header />
+        </div>
 
+        <main className="flex-grow">
+          <Routes>
+            <Route path='/signup' element={<Signup/>}/>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/settings' element={<Setting/>}/>
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
+            <Route path='/search' element={<SearchResult/>}/>
+            <Route path='/helpcenter' element={<HelpCenter/>}/>
+            <Route path='/' element={<Home />} />
+            <Route path='/cart' element={<Cart/>}/>
+            <Route path='/orders' element={<Orders/>}/>
+            <Route path="/orders/:orderId" element={<OrderDetails/>} />
+            <Route path='/checkout' element={<Checkout/>}/>
 
-        <Route path='/cart' element={<Cart/>}/>
-        <Route path='/checkout' element={<Checkout/>}/>
-        <Route path='/orders' element={<Orders/>}/>
-        <Route path="/orders/:orderId" element={<OrderDetails />} />
+            <Route path='/wishlist' element={<Wishlist/>}/>
+            <Route path='/product/:id' element={<ProductDetails />} />
 
-        <Route path='/wishlist' element={<Wishlist/>}/>
-        <Route path="/product/:id" element={<ProductDetails />} />
-      </Routes>
-      <Footer/>
+            <Route path='/Mobiles' element={<Mobiles/>}/>
+            <Route path='/Laptops' element={<Laptops/>}/>
+            <Route path='/Cameras' element={<Cameras/>}/>
+            <Route path='/Tablets' element={<Tablets/>}/>
+            <Route path='/Audio-Devices' element={<AudioDevices/>}/>
+            <Route path='/Men-Top-Wear' element={<MenTopWear/>}/>
+            <Route path='/Men-Bottom-Wear' element={<MenBottomWear/>}/>
+            <Route path='/Women-Top-Wear' element={<WomenTopWear/>}/>
+            <Route path='/Women-Bottom-Wear' element={<WomenBottomWear/>}/>
+            <Route path='/Men-Footwear' element={<MenFootwear/>}/>
+            <Route path='/Women-Footwear' element={<WomenFootwear/>}/>
+            <Route path='/Bags-Luggages' element={<BagsLuggages/>}/>
+            <Route path='/Kids' element={<Kids/>}/>
+            <Route path='/Kitchen-Appliances' element={<KitchenAppliances/>}/>
+            <Route path='/Large-Appliances' element={<LargeAppliances/>}/>
+            <Route path='/Small-Appliances' element={<SmallAppliances/>}/>
+            <Route path='/Home-Comforts' element={<HomeComforts/>}/>
+            <Route path='/Fitness-Equipment' element={<FitnessEquipments/>}/>
+            <Route path='/Outdoor-Sports' element={<OutdoorSports/>}/>
+            <Route path='/Indoor-Games' element={<IndoorGames/>}/>
+            <Route path='/Living-Room' element={<LivingRoom/>}/>
+            <Route path='/Bedroom' element={<Bedroom/>}/>
+            <Route path='/Dining-Room' element={<DiningRoom/>}/>
+            <Route path='/Office-Furniture' element={<OfficeFurniture/>}/>
+            <Route path='/Makeup' element={<Makeup/>}/>
+            <Route path='/Skin-Care' element={<SkinCare/>}/>
+            <Route path='/Hair-Care' element={<HairCare/>}/>
+            <Route path='/Toys-Games' element={<ToysandGames/>}/>
+            <Route path='/Books' element={<Books/>}/>
+          </Routes>
+        </main>
+
+        <Footer/>
+      
+      </div>
     </Router>
     </>
   )

@@ -43,12 +43,12 @@ const DealsOnProduct = () =>{
                             <span>Laptops</span>
                             <p className="text-green-600">30% off</p>
                         </Link>
-                        <Link to="/Wearable-Technology" className="product-link flex flex-col items-center">
+                        <Link to="/Audio-Devices" className="product-link flex flex-col items-center">
                             <img src={Electronics3} alt="Electronics Product" className="h-45"/>
                             <span>Headphones</span>
                             <p className="text-green-600">60% off</p>
                         </Link>
-                        <Link to="/Wearable-Technology" className="product-link flex flex-col items-center">
+                        <Link to="/Audio-Devices" className="product-link flex flex-col items-center">
                             <img src={Electronics4} alt="Electronics Product" className="h-45"/>
                             <span>Speakers</span>
                             <p className="text-green-600">Explore Now</p>

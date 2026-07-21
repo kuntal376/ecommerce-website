@@ -10,7 +10,15 @@ const routerWishlist = require('./routes/routeWishlist.js')
 const routerOrder = require('./routes/routeOrder.js')
 const bodyParser = require('body-parser');
 const cors = require('cors');
-app.use(cors());
+app.use(cors({
+    origin: [
+        "http://localhost:5173", 
+        "http://localhost:5174",
+        "https://https://eshop-5p90wb3lt-barnonas-projects.vercel.app",
+        "https://your-admin-app.vercel.app"
+    ],
+    credentials: true
+}));
 Connection();
 
 app.use(bodyParser.json( { extended : true } ));
@@ -26,6 +34,6 @@ app.use("/", routerWishlist);
 app.use("/", routerOrder);
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => console.log(`Server Running On Port Number ${PORT}`));

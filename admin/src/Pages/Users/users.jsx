@@ -16,25 +16,20 @@ import {
     FaCalendarAlt
 } from 'react-icons/fa';
 
-// Import API functions
 import { getAllUsers, deleteUser } from '../../service/api';
 
 const Users = () => {
-    // 1. State Management
     const [users, setUsers] = useState([]); 
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Filters & UI State
     const [searchTerm, setSearchTerm] = useState('');
     const [statusFilter, setStatusFilter] = useState('All');
     const [expandedRow, setExpandedRow] = useState(null); 
 
-    // Pagination State
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(10); 
 
-    // --- MOCK DATA (Updated to match your User Schema) ---
     const MOCK_USERS = [
         {
             _id: 'mock_1',
@@ -50,7 +45,6 @@ const Users = () => {
             addresses: [
                 { line1: 'Putul Apartment', line2: 'Garia', zip: '700152', city: 'Kolkata', state: 'West Bengal', country: 'India' }
             ],
-            // Schema: orderId, productId, qty, totalPrice, date
             orders: [
                 { 
                     orderId: 'ORD-998877', 
@@ -84,12 +78,10 @@ const Users = () => {
         }
     ];
 
-    // 2. API: Fetch Users on Component Mount
     useEffect(() => {
         fetchData();
     }, []);
 
-    // Reset to page 1 when search changes
     useEffect(() => {
         setCurrentPage(1);
     }, [searchTerm, statusFilter]);
@@ -118,7 +110,6 @@ const Users = () => {
         }
     };
 
-    // 3. API: Delete User
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this user?")) {
             try {
@@ -130,7 +121,6 @@ const Users = () => {
         }
     };
 
-    // 4. Helper Functions
     const toggleRow = (id) => {
         setExpandedRow(expandedRow === id ? null : id);
     };
@@ -140,7 +130,6 @@ const Users = () => {
         return 'text-red-600 bg-red-100 border-red-200';
     };
 
-    // 5. Optimized Filtering Logic
     const filteredUsers = useMemo(() => {
         const safeUsers = Array.isArray(users) ? users : [];
 
@@ -168,7 +157,6 @@ const Users = () => {
         <div className="min-h-screen bg-gray-100 p-4 md:p-8">
             <div className="max-w-7xl mx-auto">
                 
-                {/* Header Section */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
                     <div>
                         <h1 className="text-3xl font-bold text-blue-900">Users</h1>
@@ -176,30 +164,8 @@ const Users = () => {
                     </div>
                 </div>
 
-                {/* Stats Dashboard */}
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                    {[
-                        { label: 'Total Users', val: Array.isArray(users) ? users.length : 0, icon: <FaUser />, color: 'text-blue-600', bg: 'bg-blue-100' },
-                        { label: 'Active Users', val: Array.isArray(users) ? users.filter(u => u.status === 'Active').length : 0, icon: <FaCheckCircle />, color: 'text-green-600', bg: 'bg-green-100' },
-                        { label: 'Inactive Users', val: Array.isArray(users) ? users.filter(u => u.status !== 'Active').length : 0, icon: <FaTimesCircle />, color: 'text-red-600', bg: 'bg-red-100' },
-                        { label: 'New Today', val: '0', icon: <FaUser />, color: 'text-purple-600', bg: 'bg-purple-100' }
-                    ].map((stat, i) => (
-                        <div key={i} className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
-                            <div>
-                                <p className="text-gray-500 text-sm font-medium">{stat.label}</p>
-                                <h3 className="text-2xl font-bold text-gray-800 mt-1">{stat.val}</h3>
-                            </div>
-                            <div className={`p-3 rounded-full ${stat.bg} ${stat.color} text-xl`}>
-                                {stat.icon}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Filters & Table Container */}
                 <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                     
-                    {/* Toolbar */}
                     <div className="p-5 border-b border-gray-200 flex flex-col md:flex-row gap-4 justify-between items-center bg-gray-50/50">
                         <div className="relative w-full md:w-96">
                             <FaSearch className="absolute left-3 top-3.5 text-gray-400" />
@@ -225,7 +191,6 @@ const Users = () => {
                         </div>
                     </div>
 
-                    {/* Table Area */}
                     <div className="overflow-x-auto">
                         {isLoading ? (
                             <div className="p-12 text-center text-gray-500 flex flex-col items-center">
@@ -251,7 +216,6 @@ const Users = () => {
                                         currentItems.map((user) => (
                                             <React.Fragment key={user._id}>
                                                 
-                                                {/* Parent Row */}
                                                 <tr className={`hover:bg-gray-50 transition-colors ${expandedRow === user.customerId ? 'bg-blue-50/30' : ''}`}>
                                                     <td className="p-4 text-center w-10">
                                                         <button onClick={() => toggleRow(user.customerId)} className="text-gray-500 hover:text-blue-900">
@@ -271,20 +235,16 @@ const Users = () => {
                                                     <td className="p-4 text-gray-500">{user.registerOn}</td>
                                                     <td className="p-4 text-center">
                                                         <div className="flex items-center justify-center gap-2">
-                                                            <button className="p-2 hover:bg-blue-100 text-blue-600 rounded transition"><FaEye /></button>
-                                                            <button className="p-2 hover:bg-yellow-100 text-yellow-600 rounded transition"><FaEdit /></button>
                                                             <button onClick={() => handleDelete(user._id)} className="p-2 hover:bg-red-100 text-red-600 rounded transition"><FaTrashAlt /></button>
                                                         </div>
                                                     </td>
                                                 </tr>
 
-                                                {/* Collapsible Content */}
                                                 {expandedRow === user.customerId && (
                                                     <tr className="bg-gray-50 animate-fade-in">
                                                         <td colSpan="8" className="p-0 border-b border-gray-200">
                                                             <div className="p-6 grid gap-6">
                                                                 
-                                                                {/* 1. Address Section */}
                                                                 <div>
                                                                     <h4 className="flex items-center gap-2 text-sm font-bold text-gray-700 mb-3 uppercase tracking-wide">
                                                                         <FaMapMarkerAlt className="text-blue-600" /> Saved Addresses
@@ -305,7 +265,6 @@ const Users = () => {
                                                                     </div>
                                                                 </div>
 
-                                                                {/* 2. Order History Section (UPDATED) */}
                                                                 <div>
                                                                     <h4 className="flex items-center gap-2 text-sm font-bold text-gray-700 mb-3 uppercase tracking-wide">
                                                                         <FaShoppingBag className="text-blue-600" /> Order History
@@ -330,7 +289,7 @@ const Users = () => {
                                                                                             <td className="p-3 text-gray-600">
                                                                                                 <div className="flex items-center gap-1">
                                                                                                     <FaCalendarAlt className="text-gray-400 text-xs"/>
-                                                                                                    {order.date ? new Date(order.date).toLocaleDateString() : 'N/A'}
+                                                                                                    {order.date ? new Date(order.date).toLocaleDateString('en-IN') : 'N/A'}
                                                                                                 </div>
                                                                                             </td>
                                                                                             <td className="p-3 text-gray-600">{order.qty}</td>
@@ -365,7 +324,6 @@ const Users = () => {
                         )}
                     </div>
 
-                    {/* Pagination */}
                     {filteredUsers.length > 0 && (
                         <div className="p-4 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between text-sm text-gray-600 gap-4">
                             <p>Showing <span className="font-medium">{indexOfFirstItem + 1}</span> to <span className="font-medium">{Math.min(indexOfLastItem, filteredUsers.length)}</span> of <span className="font-medium">{filteredUsers.length}</span> results</p>

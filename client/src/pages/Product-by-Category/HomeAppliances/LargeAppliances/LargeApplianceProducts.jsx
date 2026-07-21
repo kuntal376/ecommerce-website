@@ -19,34 +19,6 @@ const getFinalPrice = (product) => {
   return discountedPrice + taxAmount;
 };
 
-// Helper to determine bucket (Logic preserved from original file)
-const getCapacityBucket = (value, applianceType) => {
-  if (applianceType === "Washing Machine") {
-    if (value >= 6 && value < 7) return "6 - 6.9 kg (Washing Machines)";
-    if (value >= 7 && value < 8) return "7 - 7.9 kg (Washing Machines)";
-    if (value >= 8) return "8 kg & Above (Washing Machines)";
-  }
-
-  if (applianceType === "Refrigerator") {
-    if (value < 200) return "Below 200 L (Refrigerators)";
-    if (value >= 200 && value < 300) return "200 - 299 L (Refrigerators)";
-    if (value >= 300 && value < 400) return "300 - 399 L (Refrigerators)";
-    if (value >= 400) return "400 L & Above (Refrigerators)";
-  }
-
-  if (applianceType === "Dishwasher") {
-    return `${value} Place (Dishwashers)`;
-  }
-
-  if (applianceType === "Geyser") {
-    if (value < 6) return "Below 6 L (Geysers)";
-    if (value >= 10 && value < 14) return "10 - 14 L (Geysers)";
-    if (value >= 15 && value < 24) return "15 - 24 L (Geysers)";
-    if (value >= 25) return "25 L & Above (Geysers)";
-  }
-
-  return "";
-};
 
 const LargeApplianceProducts = ({ filters, apiData }) => {
   
@@ -60,11 +32,13 @@ const LargeApplianceProducts = ({ filters, apiData }) => {
     // Extract specs
     const brand = product.brand;
     const applianceType = product.specs?.applianceType;
-    const capacityValue = product.specs?.capacityValue;
-    
+    const rawValue = String(product.specs?.capacityValue || "").trim();
+    const rawUnit = String(product.specs?.capacityUnit || "").trim();
+    const combinedCapacity = `${rawValue}${rawUnit}`;
+        
 
     const brandMatch = filters.brand.length === 0 || filters.brand.includes(brand);
-    const capacityMatch = filters.capacity.length === 0 || filters.capacity.includes(capacityValue);
+    const capacityMatch = filters.capacity.length === 0 || filters.capacity.includes(combinedCapacity);
     const applianceTypeMatch = filters.applianceType.length === 0 || filters.applianceType.includes(applianceType);
     
     const finalPrice = getFinalPrice(product);
