@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "696b6ac06bd6a0048e6ce349"
+  },
+  "name": "Barnona Das",
+  "email": "barnonadas@gmail.com",
+  "password": "$2b$10$KigbO6p75zgBNd.LqQe0eunAcStdvN/WHb1SYTsZKRtp6xZ.FPhB2",
+  "createdAt": {
+    "$date": "2026-01-17T10:56:00.192Z"
+  },
+  "__v": 0,
+  "image": "http://localhost:5000/uploads/admin-696b6ac06bd6a0048e6ce349-1769078967043.png",
+  "bio": "Admin"
+},
+{
+  "_id": {
+    "$oid": "697a09625021ace35149ef5e"
+  },
+  "name": "BARNONA DAS",
+  "email": "barnona.das.fiem.ece23@teamfuture.in",
+  "password": "$2b$10$tq6AbowbChzqyR4nONM6zedVNtfRx3lW6AvnMyZi0K8MuTWzd6OVO",
+  "createdAt": {
+    "$date": "2026-01-28T13:04:34.940Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a5f4bc32e3615ed080646c9"
+  },
+  "name": "Kuntal Das",
+  "email": "kuntaldas78356@gmail.com",
+  "password": "$2b$10$y2HBztSbd3Hmr8XS7OqFGO/T8ZHSs8Ims4.gvkjNzaEGdk73JOeOm",
+  "createdAt": {
+    "$date": "2026-07-21T10:36:51.945Z"
+  },
+  "__v": 0,
+  "resetPasswordExpire": {
+    "$date": "2026-08-03T13:49:25.684Z"
+  },
+  "resetPasswordToken": "ab368053cc6076e2b858a1cffe84a66c54a448bb8ccfcb720cd4eea9bfb5fb23"
+}]

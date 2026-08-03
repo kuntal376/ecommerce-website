@@ -1,0 +1,447 @@
+[{
+  "_id": {
+    "$oid": "6975b0c86af54a1dfde33a46"
+  },
+  "userId": "6972e93c6d49e8ecd6c3416e",
+  "products": [
+    {
+      "productId": "69744e3401163debb97aa4af",
+      "name": "PowerMax Fitness TDM-96 Motorized Treadmill",
+      "image": "http://localhost:5000/uploads/1769229876634-881226662.webp",
+      "qty": 1,
+      "price": 19039,
+      "_id": {
+        "$oid": "6975b0c86af54a1dfde33a47"
+      }
+    }
+  ],
+  "totalAmount": 18839,
+  "shippingAddress": {
+    "line1": "Putul Apartment",
+    "line2": "Pritam Kayal Library Road, Dhalua (West), Garia",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "zip": "700152",
+    "country": "India"
+  },
+  "paymentMethod": "COD",
+  "paymentStatus": "Paid",
+  "orderStatus": "Delivered",
+  "createdAt": {
+    "$date": "2026-01-25T05:57:28.977Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-26T05:48:55.875Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6975c34a532e340b7c286b10"
+  },
+  "userId": "6972e93c6d49e8ecd6c3416e",
+  "products": [
+    {
+      "productId": "696cc93d0d8d556db571fdf0",
+      "name": "Redmi A5",
+      "image": "http://localhost:5000/uploads/1768737085764-767606760.webp",
+      "qty": 1,
+      "price": 9439,
+      "_id": {
+        "$oid": "6975c34a532e340b7c286b11"
+      }
+    },
+    {
+      "productId": "697120b081157d3541f3e7a6",
+      "name": "METRONAUT Men Regular Fit Solid Spread Collar Casual Shirt",
+      "image": "http://localhost:5000/uploads/1769021616347-412313365.webp",
+      "qty": 1,
+      "price": 944,
+      "_id": {
+        "$oid": "6975c34a532e340b7c286b12"
+      }
+    },
+    {
+      "productId": "69727407309cf68b11abec01",
+      "name": "SearchForMerch Stylish S-Shape Bedside Table",
+      "image": "http://localhost:5000/uploads/1769108487224-193568975.webp",
+      "qty": 1,
+      "price": 1052,
+      "_id": {
+        "$oid": "6975c34a532e340b7c286b13"
+      }
+    }
+  ],
+  "totalAmount": 11235,
+  "shippingAddress": {
+    "line1": "Putul Apartment",
+    "line2": "Pritam Kayal Library Road, Dhalua (West), Garia",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "zip": "700152",
+    "country": "India"
+  },
+  "paymentMethod": "COD",
+  "paymentStatus": "Paid",
+  "orderStatus": "Delivered",
+  "createdAt": {
+    "$date": "2026-01-25T07:16:27.011Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-28T04:20:48.325Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697634426464a7a981a869a1"
+  },
+  "userId": "6972e93c6d49e8ecd6c3416e",
+  "products": [
+    {
+      "productId": "696f69e73b641401ea22c8e3",
+      "name": "HP MSO 2024 Intel Core i3 13th Gen 1315U",
+      "image": "http://localhost:5000/uploads/1768909287673-514882015.webp",
+      "qty": 1,
+      "price": 41988,
+      "_id": {
+        "$oid": "697634426464a7a981a869a2"
+      }
+    }
+  ],
+  "totalAmount": 41788,
+  "shippingAddress": {
+    "line1": "Putul Apartment",
+    "line2": "Pritam Kayal Library Road, Dhalua (West), Garia",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "zip": "700152",
+    "country": "India"
+  },
+  "paymentMethod": "Online",
+  "paymentStatus": "Paid",
+  "orderStatus": "Delivered",
+  "createdAt": {
+    "$date": "2026-01-25T15:18:26.783Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-25T15:19:42.480Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697834c5b376a3c6b1e3f043"
+  },
+  "userId": "6972e93c6d49e8ecd6c3416e",
+  "products": [
+    {
+      "productId": "696cc93d0d8d556db571fdf0",
+      "name": "Redmi A5",
+      "image": "http://localhost:5000/uploads/1768737085764-767606760.webp",
+      "qty": 1,
+      "price": 9439,
+      "_id": {
+        "$oid": "697834c5b376a3c6b1e3f044"
+      }
+    }
+  ],
+  "totalAmount": 9239,
+  "shippingAddress": {
+    "line1": "Putul Apartment",
+    "line2": "Pritam Kayal Library Road, Dhalua (West), Garia",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "zip": "700152",
+    "country": "India"
+  },
+  "paymentMethod": "Online",
+  "paymentStatus": "Paid",
+  "orderStatus": "Shipped",
+  "createdAt": {
+    "$date": "2026-01-27T03:45:09.366Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-28T04:20:24.528Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69798da7ae026b4848a12a88"
+  },
+  "userId": "6972e93c6d49e8ecd6c3416e",
+  "products": [
+    {
+      "productId": "6973066442c2292ef9b90ebd",
+      "name": "LakméCCCreamBronze",
+      "image": "http://localhost:5000/uploads/1769145956393-912121813.webp",
+      "qty": 1,
+      "price": 184,
+      "_id": {
+        "$oid": "69798da7ae026b4848a12a89"
+      }
+    }
+  ],
+  "totalAmount": 224,
+  "shippingAddress": {
+    "line1": "Putul Apartment",
+    "line2": "Pritam Kayal Library Road, Dhalua (West), Garia",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "zip": "700152",
+    "country": "India"
+  },
+  "paymentMethod": "Online",
+  "paymentStatus": "Paid",
+  "orderStatus": "Processing",
+  "createdAt": {
+    "$date": "2026-01-28T04:16:39.615Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-28T04:16:39.615Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697991089ac8d1657c7e5192"
+  },
+  "userId": "6972e93c6d49e8ecd6c3416e",
+  "products": [
+    {
+      "productId": "69775dc92eb646f6816e314b",
+      "name": "Crompton Ameo 750 W Mixer Grinder (4 Jar Variant)",
+      "image": "http://localhost:5000/uploads/1769430473131-806199348.webp",
+      "qty": 1,
+      "price": 3479,
+      "_id": {
+        "$oid": "697991089ac8d1657c7e5193"
+      }
+    }
+  ],
+  "totalAmount": 3279,
+  "shippingAddress": {
+    "line1": "Putul Apartment",
+    "line2": "Pritam Kayal Library Road, Dhalua (West), Garia",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "zip": "700152",
+    "country": "India"
+  },
+  "paymentMethod": "COD",
+  "paymentStatus": "Failed",
+  "orderStatus": "Cancelled",
+  "createdAt": {
+    "$date": "2026-01-28T04:31:04.394Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-28T04:58:21.234Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6979915e9ac8d1657c7e5224"
+  },
+  "userId": "6972e93c6d49e8ecd6c3416e",
+  "products": [
+    {
+      "productId": "6970dbaee362fd4088f6a474",
+      "name": "Canon EOS R50 V Mirrorless Camera Body withRF-S14-30mm F4-6.3IS STMPZ Lens (Black)",
+      "image": "http://localhost:5000/uploads/1769003950323-55058370.webp",
+      "qty": 1,
+      "price": 78879,
+      "_id": {
+        "$oid": "6979915e9ac8d1657c7e5225"
+      }
+    }
+  ],
+  "totalAmount": 78679,
+  "shippingAddress": {
+    "line1": "Putul Apartment",
+    "line2": "Pritam Kayal Library Road, Dhalua (West), Garia",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "zip": "700152",
+    "country": "India"
+  },
+  "paymentMethod": "Online",
+  "paymentStatus": "Paid",
+  "orderStatus": "Processing",
+  "createdAt": {
+    "$date": "2026-01-28T04:32:30.178Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-28T04:32:30.178Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697a0f535021ace35149f05d"
+  },
+  "userId": "697a0e4b5021ace35149ef89",
+  "products": [
+    {
+      "productId": "6971ad90352df20eeaf2921d",
+      "name": "S.N.D. ATTIRE Casual Printed Women Purple Top",
+      "image": "http://localhost:5000/uploads/1769057680215-542932273.webp",
+      "qty": 1,
+      "price": 839,
+      "_id": {
+        "$oid": "697a0f535021ace35149f05e"
+      }
+    }
+  ],
+  "totalAmount": 879,
+  "shippingAddress": {
+    "line1": "Garia",
+    "line2": "Kolkata",
+    "city": "Kolkata",
+    "state": "WB",
+    "zip": "700152",
+    "country": "India"
+  },
+  "paymentMethod": "Online",
+  "paymentStatus": "Paid",
+  "orderStatus": "Shipped",
+  "createdAt": {
+    "$date": "2026-01-28T13:29:55.296Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-28T13:31:15.456Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69857e3067d5d84504133d60"
+  },
+  "userId": "6972e93c6d49e8ecd6c3416e",
+  "products": [
+    {
+      "productId": "6970dbaee362fd4088f6a474",
+      "name": "Canon EOS R50 V Mirrorless Camera Body withRF-S14-30mm F4-6.3IS STMPZ Lens (Black)",
+      "image": "http://localhost:5000/uploads/1769003950323-55058370.webp",
+      "qty": 1,
+      "price": 78879,
+      "_id": {
+        "$oid": "69857e3067d5d84504133d61"
+      }
+    },
+    {
+      "productId": "6975bd35bc6f7f31f0aa2eeb",
+      "name": "DELL G15 Intel Core i5 13th Gen 13450HX - (16 GB/1 TB SSD/Windows 11 Home/6 GB Graphics/NVIDIA GeForce RTX 3050/120 Hz) OGN55301106G201RINO Gaming Laptop (15.6 Inch, Dark Shadow Gray With Black Thermal Shelf, 2.65 Kg, With MS Office)",
+      "image": "http://localhost:5000/uploads/1769323829337-752765757.webp",
+      "qty": 1,
+      "price": 89679,
+      "_id": {
+        "$oid": "69857e3067d5d84504133d62"
+      }
+    }
+  ],
+  "totalAmount": 168358,
+  "shippingAddress": {
+    "line1": "Putul Apartment",
+    "line2": "Pritam Kayal Library Road, Dhalua (West), Garia",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "zip": "700152",
+    "country": "India"
+  },
+  "paymentMethod": "COD",
+  "paymentStatus": "Pending",
+  "orderStatus": "Processing",
+  "createdAt": {
+    "$date": "2026-02-06T05:37:52.341Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-06T05:37:52.341Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a5f4d662e3615ed08064754"
+  },
+  "userId": "6a5f4c232e3615ed080646ca",
+  "products": [
+    {
+      "productId": "696cc93d0d8d556db571fdf0",
+      "name": "Redmi A5",
+      "image": "http://localhost:5000/uploads/1768737085764-767606760.webp",
+      "qty": 1,
+      "price": 9599,
+      "_id": {
+        "$oid": "6a5f4d662e3615ed08064755"
+      }
+    },
+    {
+      "productId": "697505fd70f41a766158c408",
+      "name": "Vivo T4x 5G (Glacial Teal)",
+      "image": "http://localhost:5000/uploads/1769276924977-917641994.webp",
+      "qty": 1,
+      "price": 17699,
+      "_id": {
+        "$oid": "6a5f4d662e3615ed08064756"
+      }
+    }
+  ],
+  "totalAmount": 27098,
+  "shippingAddress": {
+    "line1": "Sarat Pally Durgapur",
+    "line2": "",
+    "city": "Durgapur",
+    "state": "West Bengal",
+    "zip": "713206",
+    "country": "India"
+  },
+  "paymentMethod": "Online",
+  "paymentStatus": "Paid",
+  "orderStatus": "Shipped",
+  "createdAt": {
+    "$date": "2026-07-21T10:43:50.469Z"
+  },
+  "updatedAt": {
+    "$date": "2026-07-21T10:44:24.296Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a63bc1d642cc67d692a0462"
+  },
+  "userId": "6a5f4c232e3615ed080646ca",
+  "products": [
+    {
+      "productId": "6971c4f3e14d079436d61c6b",
+      "name": "Udbhav Export Embroidered Semi Stitched Lehenga Choli",
+      "image": "http://localhost:5000/uploads/1769063667657-326116673.webp",
+      "qty": 1,
+      "price": 1154,
+      "_id": {
+        "$oid": "6a63bc1d642cc67d692a0463"
+      }
+    }
+  ],
+  "totalAmount": 954,
+  "shippingAddress": {
+    "line1": "Sarat Pally Durgapur",
+    "line2": "",
+    "city": "Durgapur",
+    "state": "West Bengal",
+    "zip": "713206",
+    "country": "India"
+  },
+  "paymentMethod": "COD",
+  "paymentStatus": "Pending",
+  "orderStatus": "Shipped",
+  "createdAt": {
+    "$date": "2026-07-24T19:25:17.302Z"
+  },
+  "updatedAt": {
+    "$date": "2026-07-24T19:27:19.235Z"
+  },
+  "__v": 0
+}]

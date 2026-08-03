@@ -1,0 +1,334 @@
+[{
+  "_id": {
+    "$oid": "6972e93c6d49e8ecd6c3416e"
+  },
+  "firstname": "Barnona",
+  "lastname": "Das",
+  "username": "baren",
+  "email": "barnonadas@gmail.com",
+  "password": "$2b$10$0VgfA086eo997MGFqGnI6OuSj6JM9I9BO8TV5pNOR7i1O7ueg1o2O",
+  "phone": "+91 89102 05092",
+  "status": "Active",
+  "lastLogin": {
+    "$date": "2026-01-23T03:21:32.749Z"
+  },
+  "addresses": [
+    {
+      "line1": "Putul Apartment",
+      "line2": "Pritam Kayal Library Road, Dhalua (West), Garia",
+      "city": "Kolkata",
+      "zip": "700152",
+      "state": "West Bengal",
+      "country": "India",
+      "_id": {
+        "$oid": "6972e9686d49e8ecd6c341e9"
+      }
+    }
+  ],
+  "orders": [
+    {
+      "orderId": "6975b0c86af54a1dfde33a46",
+      "productId": "69744e3401163debb97aa4af",
+      "qty": 1,
+      "totalPrice": 19039,
+      "date": {
+        "$date": "2026-01-25T05:57:28.986Z"
+      },
+      "_id": {
+        "$oid": "6975b0c86af54a1dfde33a4b"
+      }
+    },
+    {
+      "orderId": "6975c34a532e340b7c286b10",
+      "productId": "696cc93d0d8d556db571fdf0",
+      "qty": 1,
+      "totalPrice": 9439,
+      "date": {
+        "$date": "2026-01-25T07:16:27.025Z"
+      },
+      "_id": {
+        "$oid": "6975c34b532e340b7c286b18"
+      }
+    },
+    {
+      "orderId": "6975c34a532e340b7c286b10",
+      "productId": "697120b081157d3541f3e7a6",
+      "qty": 1,
+      "totalPrice": 944,
+      "date": {
+        "$date": "2026-01-25T07:16:27.029Z"
+      },
+      "_id": {
+        "$oid": "6975c34b532e340b7c286b19"
+      }
+    },
+    {
+      "orderId": "6975c34a532e340b7c286b10",
+      "productId": "69727407309cf68b11abec01",
+      "qty": 1,
+      "totalPrice": 1052,
+      "date": {
+        "$date": "2026-01-25T07:16:27.030Z"
+      },
+      "_id": {
+        "$oid": "6975c34b532e340b7c286b1a"
+      }
+    },
+    {
+      "orderId": "697634426464a7a981a869a1",
+      "productId": "696f69e73b641401ea22c8e3",
+      "qty": 1,
+      "totalPrice": 41988,
+      "date": {
+        "$date": "2026-01-25T15:18:26.796Z"
+      },
+      "_id": {
+        "$oid": "697634426464a7a981a869aa"
+      }
+    },
+    {
+      "orderId": "697834c5b376a3c6b1e3f043",
+      "productId": "696cc93d0d8d556db571fdf0",
+      "qty": 1,
+      "totalPrice": 9439,
+      "date": {
+        "$date": "2026-01-27T03:45:09.392Z"
+      },
+      "_id": {
+        "$oid": "697834c5b376a3c6b1e3f04d"
+      }
+    },
+    {
+      "orderId": "69798da7ae026b4848a12a88",
+      "productId": "6973066442c2292ef9b90ebd",
+      "qty": 1,
+      "totalPrice": 184,
+      "date": {
+        "$date": "2026-01-28T04:16:39.625Z"
+      },
+      "_id": {
+        "$oid": "69798da7ae026b4848a12a93"
+      }
+    },
+    {
+      "orderId": "6979908e3ad78075978895b5",
+      "productId": "69775dc92eb646f6816e314b",
+      "qty": 1,
+      "totalPrice": 3479,
+      "date": {
+        "$date": "2026-01-28T04:29:02.841Z"
+      },
+      "_id": {
+        "$oid": "6979908e3ad78075978895c1"
+      }
+    },
+    {
+      "orderId": "697991089ac8d1657c7e5192",
+      "productId": "69775dc92eb646f6816e314b",
+      "qty": 1,
+      "totalPrice": 3479,
+      "date": {
+        "$date": "2026-01-28T04:31:04.421Z"
+      },
+      "_id": {
+        "$oid": "697991089ac8d1657c7e519f"
+      }
+    },
+    {
+      "orderId": "6979915e9ac8d1657c7e5224",
+      "productId": "6970dbaee362fd4088f6a474",
+      "qty": 1,
+      "totalPrice": 78879,
+      "date": {
+        "$date": "2026-01-28T04:32:30.186Z"
+      },
+      "_id": {
+        "$oid": "6979915e9ac8d1657c7e5232"
+      }
+    },
+    {
+      "orderId": "69857e3067d5d84504133d60",
+      "productId": "6970dbaee362fd4088f6a474",
+      "qty": 1,
+      "totalPrice": 78879,
+      "date": {
+        "$date": "2026-02-06T05:37:52.374Z"
+      },
+      "_id": {
+        "$oid": "69857e3067d5d84504133d70"
+      }
+    },
+    {
+      "orderId": "69857e3067d5d84504133d60",
+      "productId": "6975bd35bc6f7f31f0aa2eeb",
+      "qty": 1,
+      "totalPrice": 89679,
+      "date": {
+        "$date": "2026-02-06T05:37:52.378Z"
+      },
+      "_id": {
+        "$oid": "69857e3067d5d84504133d71"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-01-23T03:21:32.749Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-06T05:37:52.389Z"
+  },
+  "__v": 24,
+  "gender": "female",
+  "profileImage": "1769144506935-luke-skywalker-with-lightsaber-desktop-wallpaper-preview.jpg"
+},
+{
+  "_id": {
+    "$oid": "69734548c8183e3216ca1a87"
+  },
+  "firstname": "Kian",
+  "lastname": "Zen",
+  "username": "kianzen",
+  "email": "kianzen.art@gmail.com",
+  "password": "$2b$10$tPGs7cigHqR1cIYhXX8ijOzjwb/B57i/LzKubCu4gtdo77np03oVC",
+  "phone": "9804510736",
+  "status": "Active",
+  "lastLogin": {
+    "$date": "2026-01-23T09:54:16.938Z"
+  },
+  "addresses": [],
+  "orders": [],
+  "createdAt": {
+    "$date": "2026-01-23T09:54:16.939Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-23T09:54:16.939Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697a0e4b5021ace35149ef89"
+  },
+  "firstname": "BARNONA",
+  "lastname": "DAS",
+  "username": "14800323024",
+  "email": "barnona.das.fiem.ece23@teamfuture.in",
+  "password": "$2b$10$36K84cVSNm1f2d0F4UCWxusuxS7iy5WGHpauN3BPr58gx4NXrW5BS",
+  "phone": "8910205092",
+  "status": "Active",
+  "lastLogin": {
+    "$date": "2026-01-28T13:25:31.201Z"
+  },
+  "addresses": [
+    {
+      "line1": "Garia",
+      "line2": "Kolkata",
+      "city": "Kolkata",
+      "zip": "700152",
+      "state": "WB",
+      "country": "India",
+      "_id": {
+        "$oid": "697a0eab5021ace35149f024"
+      }
+    }
+  ],
+  "orders": [
+    {
+      "orderId": "697a0f535021ace35149f05d",
+      "productId": "6971ad90352df20eeaf2921d",
+      "qty": 1,
+      "totalPrice": 839,
+      "date": {
+        "$date": "2026-01-28T13:29:55.313Z"
+      },
+      "_id": {
+        "$oid": "697a0f535021ace35149f062"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-01-28T13:25:31.201Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-28T13:29:55.317Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6a5f4c232e3615ed080646ca"
+  },
+  "firstname": "Kuntal",
+  "lastname": "Das",
+  "username": "Kuntal_Das",
+  "email": "kuntaldas78356@gmail.com",
+  "password": "$2b$10$tS3wjXzokDIxC9kmYIRnJelyPpIRyFwpa7kAaso0dgV.nd4M1oA5O",
+  "phone": "7601933554",
+  "status": "Active",
+  "lastLogin": {
+    "$date": "2026-07-21T10:38:27.525Z"
+  },
+  "addresses": [
+    {
+      "line1": "Sarat Pally Durgapur",
+      "line2": "",
+      "city": "Durgapur",
+      "zip": "713206",
+      "state": "West Bengal",
+      "country": "India",
+      "_id": {
+        "$oid": "6a5f4c992e3615ed08064750"
+      }
+    }
+  ],
+  "orders": [
+    {
+      "orderId": "6a5f4d662e3615ed08064754",
+      "productId": "696cc93d0d8d556db571fdf0",
+      "qty": 1,
+      "totalPrice": 9599,
+      "date": {
+        "$date": "2026-07-21T10:43:50.477Z"
+      },
+      "_id": {
+        "$oid": "6a5f4d662e3615ed08064758"
+      }
+    },
+    {
+      "orderId": "6a5f4d662e3615ed08064754",
+      "productId": "697505fd70f41a766158c408",
+      "qty": 1,
+      "totalPrice": 17699,
+      "date": {
+        "$date": "2026-07-21T10:43:50.479Z"
+      },
+      "_id": {
+        "$oid": "6a5f4d662e3615ed08064759"
+      }
+    },
+    {
+      "orderId": "6a63bc1d642cc67d692a0462",
+      "productId": "6971c4f3e14d079436d61c6b",
+      "qty": 1,
+      "totalPrice": 1154,
+      "date": {
+        "$date": "2026-07-24T19:25:17.345Z"
+      },
+      "_id": {
+        "$oid": "6a63bc1d642cc67d692a0467"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-07-21T10:38:27.526Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-03T13:35:13.745Z"
+  },
+  "__v": 2,
+  "gender": "male",
+  "resetPasswordExpires": {
+    "$date": "2026-08-03T14:35:13.739Z"
+  },
+  "resetPasswordToken": "2dfc5ee4dc05a633af98012d05b83d3e3577da38056d1f1da1830dee90fa77ca"
+}]
